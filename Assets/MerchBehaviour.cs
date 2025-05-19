@@ -4,6 +4,8 @@ public class MerchBehaviour : MonoBehaviour
 {
     public MerchSO merch;
     public int cost;
+    public Transform tf;
+
 
     private void Start()
     {
@@ -22,5 +24,6 @@ public class MerchBehaviour : MonoBehaviour
         merchInstance.GetComponent<MeshCollider>().convex = true;
         merchInstance.layer = LayerMask.NameToLayer("Merch");
         merchInstance.AddComponent(typeof(Rigidbody));
+        merchInstance.GetComponent<Rigidbody>().isKinematic = true;
     }
 }
