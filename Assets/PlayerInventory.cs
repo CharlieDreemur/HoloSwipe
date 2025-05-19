@@ -67,4 +67,9 @@ public class PlayerInventory : MonoBehaviour
         playersMerch.Add(merchInstance.merch);
         Destroy(merchInstance.gameObject);
     }
+
+    void CalculateStats() // calculate total stats given by the inventory, then relays it to player stat manager
+    {
+
+    }
 }
