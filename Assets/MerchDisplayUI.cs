@@ -7,6 +7,7 @@ public class MerchDisplayUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI merchName, merchCost, merchStats, merchFlavor;
     [SerializeField] Image merchInfo;
     [SerializeField] Camera cam;
+    [SerializeField] Canvas canvas;
     [SerializeField] Vector3 displayOffset;
     public void DisplayMerch(MerchBehaviour merch)
     {        
@@ -19,7 +20,7 @@ public class MerchDisplayUI : MonoBehaviour
         Vector3 temp = cam.WorldToScreenPoint(merch.tf.position);
         merchName.text = merch.merch.name;
         merchCost.text = merch.cost.ToString();
-        merchInfo.transform.position = temp + displayOffset;
+        merchInfo.transform.position = temp + displayOffset*canvas.scaleFactor;
         merchInfo.gameObject.SetActive(true);
         
         
