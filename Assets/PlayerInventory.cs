@@ -16,7 +16,7 @@ public class PlayerInventory : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E)) 
+        if (Input.GetKeyDown(KeyCode.Space)) 
         {
             BuyNearbyMerch();
         }
@@ -66,5 +66,10 @@ public class PlayerInventory : MonoBehaviour
         money -= merchInstance.cost;
         playersMerch.Add(merchInstance.merch);
         Destroy(merchInstance.gameObject);
+    }
+
+    void CalculateStats() // calculate total stats given by the inventory, then relays it to player stat manager
+    {
+
     }
 }
