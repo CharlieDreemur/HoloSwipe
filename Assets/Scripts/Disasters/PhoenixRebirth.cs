@@ -2,19 +2,54 @@ using UnityEngine;
 
 public class PhoenixRebirth : Disaster
 {
-    public float delay = 30; //in seconds
-    public float radius = 10;
+    public float delay;
+    public float duration; // how long the flames stick around
+    public float kiaraDuration; // how long kiara stays after rebirth
+    public float radius;
 
-    
+
+    [SerializeField] GameObject innerCircle, outerCircle, flames, kiara;
+
+    float timePassed = 0;
     
     void Awake()
     {
+        delay = delay / (1 + speedIncrease*day); // fires faster on later days
+        duration = duration / (1 + speedIncrease * day); // duration also decreases cause its not really meant to be a duration disaster
+        outerCircle.transform.localScale = new Vector3(radius, 0.01f, radius);
         
     }
 
-    private void Update() //not using a coroutine so it runs on gametime
+    private void Update() //not using a coroutine so it runs on gametime (pause menu etc)
     {
-        
+        timePassed += Time.deltaTime;
+        innerCircle.transform.localScale = new Vector3(radius * timePassed / delay, 0.015f, radius * timePassed / delay);
+
+        if (timePassed > delay)
+        {
+            flames.SetActive(false);
+            if (timePassed < delay + duration)
+            {
+                innerCircle.SetActive(false);
+                outerCircle.SetActive(false);
+                flames.SetActive(true);
+                Color col = flames.GetComponent<Renderer>().material.color;
+                col.a = 1-((timePassed - delay) / (duration)); //flames slowly become transparent
+                flames.GetComponent<Renderer>().material.color = col;
+                if (touchingPlayer)
+                {
+                    EndDay();
+                }
+            } else
+            {
+                kiara.transform.position += new Vector3(0, 10*Time.deltaTime, 0); //takes flight
+            }
+
+            if (timePassed > delay + duration + kiaraDuration) //just 2 seconds for the flames to dissipate
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 
 

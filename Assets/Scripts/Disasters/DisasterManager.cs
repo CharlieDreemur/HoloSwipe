@@ -17,7 +17,7 @@ public class DisasterManager : MonoBehaviour
     private float nextSpawn; //how much time must pass before the next disaster spawns
     private float timePassed = 0; // how much time has passed since the last disaster
 
-    
+    [SerializeField] GameObject phoenixRebirth, eldritchRitual, timeParadox, sharkAttack, yaooo, reaperHunt; // reference prefabs so they can spawn
 
     public Vector3 playerloc()
     {
