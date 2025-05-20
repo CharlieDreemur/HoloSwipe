@@ -9,7 +9,7 @@ public class DisasterManager : MonoBehaviour
 
     [SerializeField] float spawnTimeMin; 
     [SerializeField] float spawnTimeMax;
-    [SerializeField] float spawnTimeInc; // how much faster disasters spawn as days pass, its 1 + spawnTimeInc
+    [SerializeField] float spawnTimeDecrease; // how much faster disasters spawn as days pass, its 1 + spawnTimeInc
 
     [SerializeField] float minX, maxX, minZ, maxZ; //bounds of the spawn location
     //We can give Mori/Yagoo set spawn locations cause otherwise its annoying to make sure theyre not in walls
@@ -28,7 +28,7 @@ public class DisasterManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        nextSpawn = Random.Range(spawnTimeMin/ (1 + spawnTimeInc * day), spawnTimeMax/ (1 + spawnTimeInc * day));
+        nextSpawn = Random.Range(spawnTimeMin/ (1 + spawnTimeDecrease * day), spawnTimeMax/ (1 + spawnTimeDecrease * day));
     }
 
     // Update is called once per frame
