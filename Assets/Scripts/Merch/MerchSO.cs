@@ -4,5 +4,6 @@ using UnityEngine;
 public class MerchSO : ScriptableObject
 {
     public GameObject mesh;
+
     public int cost;
 }
