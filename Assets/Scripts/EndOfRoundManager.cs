@@ -7,12 +7,18 @@ using UnityEngine.SceneManagement;
 
 public class EndOfRoundManager : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI boughtMerchText;
+    [SerializeField] TextMeshProUGUI boughtMerchText, valueText, nextValueText, moneyText;
 
     private void Start()
     {
         DisplayBoghtMerch();
+        valueText.text = "Total Value : " + CalculateValue() + "/" + GameManager.instance.neededValue;
+        moneyText.text = "Player Money : " + GameManager.instance.playerMoney + "+" + GameManager.instance.salary;
+        GameManager.instance.ProgressDay();
+        nextValueText.text = "Next Day Value: " + GameManager.instance.neededValue; 
     }
+
+
 
     void DisplayBoghtMerch() 
     {
@@ -28,8 +34,20 @@ public class EndOfRoundManager : MonoBehaviour
         boughtMerchText.text = text;
     }
 
+    int CalculateValue() 
+    {
+        int value = 0;
+
+        foreach (var item in GameManager.instance.merch)
+        {
+            value += item.value;
+        }
+
+        return value;
+    }
+
     public void GoBackToGame() 
     {
-        SceneManager.LoadScene("Game Scene");
+        SceneManager.LoadScene("Game Scene 1");
     }
 }

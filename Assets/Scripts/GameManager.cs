@@ -7,9 +7,12 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     
-    int day;
-    int neededValue;
+    int day = 1;
+    public int neededValue = 10;
     public List<MerchSO> merch;
+
+    public int playerMoney;
+    public int salary = 15;
 
     private void Start()
     {
@@ -21,6 +24,13 @@ public class GameManager : MonoBehaviour
 
         instance = this;
         DontDestroyOnLoad(gameObject);
+    }
+
+    public void ProgressDay() 
+    {
+        neededValue = (int)(neededValue * 1.5f);
+        day++;
+        playerMoney += salary;
     }
     
     public void EndDay() 

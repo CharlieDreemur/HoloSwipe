@@ -14,6 +14,14 @@ public class PlayerInventory : MonoBehaviour
 
     MerchBehaviour nearbyMerch;
 
+    private void Start()
+    {
+        if (GameManager.instance == null)
+            return;
+
+        money = GameManager.instance.playerMoney;
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space)) 
