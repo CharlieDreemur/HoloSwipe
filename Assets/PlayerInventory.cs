@@ -20,6 +20,12 @@ public class PlayerInventory : MonoBehaviour
         {
             BuyNearbyMerch();
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            GameManager.instance.merch = playersMerch;
+            GameManager.instance.EndDay();
+        }
     }
 
     private void FixedUpdate()
