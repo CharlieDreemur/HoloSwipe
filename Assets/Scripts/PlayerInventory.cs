@@ -68,10 +68,13 @@ public class PlayerInventory : MonoBehaviour
             return;
 
         merchDisplay.DisplayMerch(nearbyMerch);
-    }
+    } 
 
     void BuyNearbyMerch() 
     {
+        if (nearbyMerch == null)
+            return;
+
         MerchBehaviour merchInstance = nearbyMerch;
         SetNearbyMerch(null);
         if (money < merchInstance.cost)
