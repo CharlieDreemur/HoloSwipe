@@ -5,14 +5,14 @@ public class Disaster : MonoBehaviour
     public int day;
     
     //[SerializeField] GameManager gm; //This is where I would put the GameManager, IF I HAD ONE
-    [SerializeField] GameObject PlayerCharacter;
+    [SerializeField] protected GameObject playerCharacter;
     [SerializeField] protected float speedIncrease; // this is how much faster this disaster gets each day, mostly for ones who chase you, but can potentially be used to shorten windup
 
     public bool touchingPlayer; 
 
     public Vector3 playerloc()
     {
-        return new Vector3(PlayerCharacter.transform.position.x, 0, PlayerCharacter.transform.position.z);
+        return new Vector3(playerCharacter.transform.position.x, 0, playerCharacter.transform.position.z);
     }
 
 
@@ -40,14 +40,14 @@ public class Disaster : MonoBehaviour
         }
     }*/
 
-    private void OnTriggerEnter(Collider other)
+    protected void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
             touchingPlayer = true;
         }
     }
-    private void OnTriggerStay(Collider other)
+    protected void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
@@ -55,7 +55,7 @@ public class Disaster : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    protected void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
