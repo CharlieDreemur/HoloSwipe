@@ -7,7 +7,10 @@ public class LeaveBounds : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            GameManager.instance.EndDay();
+            PlayerStatManager statManager = other.gameObject.GetComponent<PlayerStatManager>();
+            PlayerInventory inventory = other.gameObject.GetComponent<PlayerInventory>();
+
+            GameManager.instance.EndDay(inventory, statManager);
         }
     }
 }

@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public int playerMoney;
     public int salary = 15;
 
+    public PlayerStats playerStats = new PlayerStats();
+
     private void Start()
     {
         if (instance != null)
@@ -33,8 +35,10 @@ public class GameManager : MonoBehaviour
         playerMoney += salary;
     }
     
-    public void EndDay() 
+    public void EndDay(PlayerInventory inventory, PlayerStatManager playerStats) 
     {
+        this.playerStats = new PlayerStats(playerStats.playerStats);
+        merch = inventory.playersMerch;
         SceneManager.LoadScene("EndOfRoundScoreboard");
     }
 }

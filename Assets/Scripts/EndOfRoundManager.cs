@@ -9,6 +9,8 @@ public class EndOfRoundManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI boughtMerchText, valueText, nextValueText, moneyText;
 
+    public int merchValue;
+
     private void Start()
     {
         DisplayBoghtMerch();
@@ -36,14 +38,12 @@ public class EndOfRoundManager : MonoBehaviour
 
     int CalculateValue() 
     {
-        int value = 0;
-
         foreach (var item in GameManager.instance.merch)
         {
-            value += item.value;
+            item.OnEndEffect(this);
         }
 
-        return value;
+        return merchValue;
     }
 
     public void GoBackToGame() 
