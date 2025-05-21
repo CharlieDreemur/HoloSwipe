@@ -47,6 +47,10 @@ public class SharkAttack : Disaster
         } else
         {
             sharkCenter.transform.position = new Vector3(sharkCenter.transform.position.x, depth + height, sharkCenter.transform.position.z);
+            if (touchingPlayer)
+            {
+                EndDay();
+            }
         }
 
        
