@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class StatsSO : ScriptableObject
 { 
-    public float baseRotationSpeed, baseMoveSpeed, baseSalary, baseDiscount, baseLuck, dayLength; 
+    public float baseRotationSpeed, baseMoveSpeed, baseSalary, baseDiscount, baseLuck, dayLength;
+    public PlayerStats stats;
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 public class MerchBehaviour : MonoBehaviour
 {
     public MerchSO merch;
-    public int cost;
+    [HideInInspector] public int cost;
     public Transform tf;
 
 

@@ -8,17 +8,21 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] LayerMask merchLayer;
     [SerializeField] int money;
 
-    [SerializeField] List<MerchSO> playersMerch = new List<MerchSO>();
+    public List<MerchSO> playersMerch = new List<MerchSO>();
 
     [SerializeField] MerchDisplayUI merchDisplay;
 
     MerchBehaviour nearbyMerch;
 
+    public PlayerStatManager playerStatManager;
+
     private void Start()
     {
+         TryGetComponent<PlayerStatManager>(out playerStatManager);
         if (GameManager.instance == null)
             return;
 
+        playersMerch = GameManager.instance.merch;
         money = GameManager.instance.playerMoney;
     }
 
@@ -27,12 +31,6 @@ public class PlayerInventory : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)) 
         {
             BuyNearbyMerch();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            GameManager.instance.merch = playersMerch;
-            GameManager.instance.EndDay();
         }
     }
 
@@ -81,8 +79,22 @@ public class PlayerInventory : MonoBehaviour
             return;
 
         money -= merchInstance.cost;
-        playersMerch.Add(merchInstance.merch);
+        GetMerchItem(merchInstance.merch);
         Destroy(merchInstance.gameObject);
+    }
+
+    public void GetMerchItem(MerchSO merch) 
+    {
+        playersMerch.Add(merch);
+        if (playerStatManager != null)
+            merch.OnGetMerch(playerStatManager);
+    }
+
+    public void LoseMerchItem(MerchSO merch) 
+    {
+        playersMerch.Remove(merch);
+        if (playerStatManager != null)
+            merch.OnLoseMerch(playerStatManager);
     }
 
     void CalculateStats() // calculate total stats given by the inventory, then relays it to player stat manager
