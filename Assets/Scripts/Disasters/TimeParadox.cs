@@ -26,7 +26,7 @@ public class TimeParadox : Disaster
             playerCharacter.GetComponent<PlayerStatManager>().slowed = false;
         }
 
-        if (timePassed > duration + spawnTime * 2)
+        if (timePassed > duration + spawnTime * 1.95f)//a little faster to
         {
             Destroy(gameObject);
         }
@@ -37,6 +37,9 @@ public class TimeParadox : Disaster
         } else if (timePassed > duration + spawnTime)
         {
             zone.transform.localScale = new Vector3(radius * (1-(timePassed- spawnTime - duration) / spawnTime), radius * (1 - (timePassed - spawnTime - duration) / spawnTime), radius * (1 - (timePassed - spawnTime - duration) / spawnTime));
+        } else
+        {
+            zone.transform.localScale = new Vector3(radius, radius, radius);
         }
 
     }

@@ -6,6 +6,8 @@ public class PhoenixRebirth : Disaster
     public float duration; // how long the flames stick around
     public float kiaraDuration; // how long kiara stays after rebirth
     public float radius;
+    public float flameHeight;
+    public float kiaraAscensionSpeed; //just made it speed instead of height cause thats how I initially programmed it and i dont wanna spend another minute
 
 
     [SerializeField] GameObject innerCircle, outerCircle, flames, kiara;
@@ -33,16 +35,14 @@ public class PhoenixRebirth : Disaster
                 innerCircle.SetActive(false);
                 outerCircle.SetActive(false);
                 flames.SetActive(true);
-                Color col = flames.GetComponent<Renderer>().material.color;
-                col.a = 1-((timePassed - delay) / (duration)); //flames slowly become transparent
-                flames.GetComponent<Renderer>().material.color = col;
+                flames.transform.position -= new Vector3(0, flameHeight * Time.deltaTime/delay, 0);
                 if (touchingPlayer)
                 {
                     EndDay();
                 }
             } else
             {
-                kiara.transform.position += new Vector3(0, 10*Time.deltaTime, 0); //takes flight
+                kiara.transform.position += new Vector3(0, kiaraAscensionSpeed*Time.deltaTime, 0); //takes flight
             }
 
             if (timePassed > delay + duration + kiaraDuration) //just 2 seconds for the flames to dissipate
