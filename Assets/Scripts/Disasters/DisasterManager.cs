@@ -6,6 +6,8 @@ public class DisasterManager : MonoBehaviour
 
     //[SerializeField] GameManager gm; //This is where I would put the GameManager, IF I HAD ONE
     [SerializeField] GameObject PlayerCharacter; //will pass this onto disasters spawned
+    [SerializeField] GameObject Camera; //can pass onto disasters
+
 
     [SerializeField] float spawnTimeMin; 
     [SerializeField] float spawnTimeMax;
