@@ -8,7 +8,9 @@ public class Disaster : MonoBehaviour
     [SerializeField] protected GameObject playerCharacter;
     [SerializeField] protected float speedIncrease; // this is how much faster this disaster gets each day, mostly for ones who chase you, but can potentially be used to shorten windup
 
-    public bool touchingPlayer; 
+    public bool touchingPlayer;
+
+    protected bool slowed;
 
     public Vector3 playerloc()
     {
@@ -46,12 +48,20 @@ public class Disaster : MonoBehaviour
         {
             touchingPlayer = true;
         }
+        if (other.gameObject.CompareTag("TimeParadox"))
+        {
+            slowed = true;
+        }
     }
     protected void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
             touchingPlayer = true;
+        }
+        if (other.gameObject.CompareTag("TimeParadox"))
+        {
+            slowed = true;
         }
     }
 
@@ -60,6 +70,10 @@ public class Disaster : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             touchingPlayer = false;
+        }
+        if (other.gameObject.CompareTag("TimeParadox"))
+        {
+            slowed = false;
         }
     }
 }
