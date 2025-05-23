@@ -10,7 +10,7 @@ public class TimeParadox : Disaster
     public float spawnTime; //how long it takes for the sphere to appear/disappear
 
     float timePassed = 0;
-    private void Awake()
+    private void Start()
     {
         
     }
@@ -18,13 +18,6 @@ public class TimeParadox : Disaster
     private void Update()
     {
         timePassed += Time.deltaTime;
-        if (touchingPlayer)
-        {
-            playerCharacter.GetComponent<PlayerStatManager>().slowed = true;
-        } else
-        {
-            playerCharacter.GetComponent<PlayerStatManager>().slowed = false;
-        }
 
         if (timePassed > duration + spawnTime * 1.95f)//a little faster to
         {

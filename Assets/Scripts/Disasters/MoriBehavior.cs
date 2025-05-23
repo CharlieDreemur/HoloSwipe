@@ -11,7 +11,7 @@ public class MoriBehavior : Chaser
 
     private float timePassed;
 
-    private void Awake()
+    private void Start()
     {
         baseSpeed = baseSpeed * (1 + speedIncrease * day);
         baseRotSpeed = baseRotSpeed * (1 + speedIncrease * day);

@@ -17,7 +17,7 @@ public class Tentacle : Disaster
 
     float timePassed = 0;
 
-    void Awake()
+    void Start()
     {
         var main = dustCloud.main;
         main.duration = spawnTime;
