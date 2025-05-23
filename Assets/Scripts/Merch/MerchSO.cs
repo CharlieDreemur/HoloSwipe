@@ -9,6 +9,11 @@ public class MerchSO : ScriptableObject
 
     public MerchEffect[] effects;
 
+    public Vector2Int[] merchUIShape;
+
+    public Vector2 zeroZeroPos = new Vector2(0, 0.45f);
+    public float UISize = 1;
+
     public void OnGetMerch(PlayerStatManager playerStatManager) 
     {
         foreach (var item in effects)
