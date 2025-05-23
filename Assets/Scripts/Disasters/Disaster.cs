@@ -5,7 +5,7 @@ public class Disaster : MonoBehaviour
     public int day;
     
     //[SerializeField] GameManager gm; //This is where I would put the GameManager, IF I HAD ONE
-    [SerializeField] protected GameObject playerCharacter;
+    [SerializeField] public GameObject playerCharacter;
     [SerializeField] protected float speedIncrease; // this is how much faster this disaster gets each day, mostly for ones who chase you, but can potentially be used to shorten windup
 
     public bool touchingPlayer;

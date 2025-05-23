@@ -30,4 +30,27 @@ public class PlayerStatManager : MonoBehaviour
             PlayerCharacter.maxWalkSpeed = PlayerCharacter.maxWalkSpeed * 0.3f;
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("TimeParadox"))
+        {
+            slowed = true;
+        }
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("TimeParadox"))
+        {
+            slowed = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("TimeParadox"))
+        {
+            slowed = false;
+        }
+    }
 }

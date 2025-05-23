@@ -19,7 +19,7 @@ public class SharkAttack : Disaster
 
     float timePassed = 0;
     
-    void Awake()
+    void Start()
     {
         rotSpeed = rotSpeed * (1 + speedIncrease * day);
         for (int i = 0; i < 8; i++) //only 8 sharks, not gonna support changing this just cause its kinda annoying

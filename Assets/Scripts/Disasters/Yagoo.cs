@@ -11,7 +11,7 @@ public class Yagoo : Chaser
     private float YagooFactor = 1; 
     //private float timePassed = 0;
 
-    private void Awake()
+    private void Start()
     {
         agent.speed = baseSpeed;
         agent.angularSpeed = baseRotSpeed;

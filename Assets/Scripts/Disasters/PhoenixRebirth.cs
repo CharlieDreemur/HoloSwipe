@@ -14,7 +14,7 @@ public class PhoenixRebirth : Disaster
 
     float timePassed = 0;
     
-    void Awake()
+    void Start()
     {
         delay = delay / (1 + speedIncrease*day); // fires faster on later days
         duration = duration / (1 + speedIncrease * day); // duration also decreases cause its not really meant to be a duration disaster
