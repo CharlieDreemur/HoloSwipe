@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class InventoryUIManager : MonoBehaviour
 {
@@ -20,10 +21,48 @@ public class InventoryUIManager : MonoBehaviour
     [SerializeField] LayerMask UILayer;
 
     List<InventoryTile> highLightedTiles = new List<InventoryTile>();
+    [SerializeField] List<MerchInstance> merchInstances = new List<MerchInstance>();
+
+    [SerializeField] MerchUIObject merchUIObject;
+
+    [SerializeField] Transform merchParent;
+
+    public static MerchSO newItem;
+
+    [SerializeField] Transform newItemPos;
+
+    public static void OpenInventory() 
+    {
+        SceneManager.LoadScene("InventoryScene", LoadSceneMode.Additive);
+    }
 
     private void Start()
     {
         PrepareGrid();
+
+        if(newItem != null) 
+        {
+            MerchUIObject newItemInstance = Instantiate(merchUIObject, merchParent);
+            newItemInstance.transform.position = newItemPos.position;
+            newItemInstance.SetMerch(new MerchInstance(newItem));
+            newItem = null;
+        }
+
+        if(GameManager.instance != null) 
+        {
+            foreach (var item in GameManager.instance.merch)
+            {
+                MerchUIObject instance = Instantiate(merchUIObject, merchParent);
+                instance.SetMerch(item);
+
+                for (int i = 0; i < instance.merch.inventoryRotIndex - 1; i++)
+                {
+                    instance.RotateTile();
+                }
+
+                SetMerchInArea(instance, instance.merch.inventoryPosition);
+            }
+        }
     }
 
     void PrepareGrid() 
@@ -152,7 +191,7 @@ public class InventoryUIManager : MonoBehaviour
         else
         {
             List<InventoryTile> list = new List<InventoryTile>();
-            foreach (var item in heldMerchUIObject.merch.merchUIShape)
+            foreach (var item in heldMerchUIObject.tilePos)
             {
                 list.Add(GetTileInPos(GetCordsFromWorldPos(pos) + item));
             }
@@ -163,10 +202,18 @@ public class InventoryUIManager : MonoBehaviour
         if (heldMerchUIObject != null) 
         {
 
-            pos -= (Vector3)heldMerchUIObject.merch.zeroZeroPos;
+            pos -= (Vector3)heldMerchUIObject.offset;
             pos.z = 500; 
             heldMerchUIObject.transform.position =pos;
             heldMerchUIObject.transform.localPosition = new Vector3(heldMerchUIObject.transform.localPosition.x, heldMerchUIObject.transform.localPosition.y, 0);
+        }
+
+        if (Input.GetMouseButtonDown(2)) 
+        {
+            if(heldMerchUIObject != null) 
+            {
+                heldMerchUIObject.RotateTile();
+            }
         }
 
         if (Input.GetMouseButtonDown(0)) 
@@ -177,15 +224,9 @@ public class InventoryUIManager : MonoBehaviour
             {
                 if(inventoryTile != null) 
                 {
-                    if(DoesMerchItemFit(heldMerchUIObject.merch, inventoryTile.pos)) 
+                    if(DoesMerchItemFit(heldMerchUIObject, inventoryTile.pos))
                     {
-                        foreach (var item in heldMerchUIObject.merch.merchUIShape)
-                        {
-                            Vector2Int cords = inventoryTile.pos + item;
-                            heldMerchUIObject.inventoryTiles.Add(grid[cords.x, cords.y]);
-                            grid[cords.x, cords.y].merchUIHere = heldMerchUIObject;
-                        }
-                            heldMerchUIObject.transform.position = GetGridWorldPosFromCords(inventoryTile.pos) - (Vector3)heldMerchUIObject.merch.zeroZeroPos;
+                        SetMerchInArea(heldMerchUIObject ,inventoryTile.pos);
                     }
                     else
                     {
@@ -198,9 +239,22 @@ public class InventoryUIManager : MonoBehaviour
         }
     }
 
-    bool DoesMerchItemFit(MerchSO merch, Vector2Int pos) 
+    private void SetMerchInArea(MerchUIObject merch ,Vector2Int pos)
     {
-        foreach (var item in merch.merchUIShape)
+        foreach (var item in merch.tilePos)
+        {
+            Vector2Int cords = pos + item;
+            merch.inventoryTiles.Add(grid[cords.x, cords.y]);
+            grid[cords.x, cords.y].merchUIHere = merch;
+        }
+        merch.transform.position = GetGridWorldPosFromCords(pos) - (Vector3)merch.offset;
+        merchInstances.Add(merch.merch);
+        merch.SetMerchPosAndRot(pos);
+    }
+
+    bool DoesMerchItemFit(MerchUIObject merch, Vector2Int pos) 
+    {
+        foreach (var item in merch.tilePos)
         {
             InventoryTile tileInPos = GetTileInPos(item + pos);
 
@@ -222,10 +276,16 @@ public class InventoryUIManager : MonoBehaviour
 
         if( Physics.Raycast(beamPos, Vector3.forward, out ray,Mathf.Infinity, UILayer)) 
         {
-            print(ray.collider.gameObject.name);
             heldMerchUIObject = ray.collider.transform.parent.GetComponent<MerchUIObject>();
             heldMerchUIObject.ClearInventoryTiles();
+            merchInstances.Remove(heldMerchUIObject.merch);
         }
 
+    }
+
+    public void CloseInventory() 
+    {
+        GameManager.instance.merch = merchInstances;
+        SceneManager.UnloadSceneAsync("InventoryScene");
     }
 }
