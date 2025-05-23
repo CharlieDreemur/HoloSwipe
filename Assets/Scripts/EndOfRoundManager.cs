@@ -26,11 +26,11 @@ public class EndOfRoundManager : MonoBehaviour
     {
         string text = "Boght Merch:";
 
-        List<MerchSO> merch = GameManager.instance.merch;
+        List<MerchInstance> merch = GameManager.instance.merch;
 
         foreach (var item in merch)
         {
-            text += "<br> " + item.name;
+            text += "<br> " + item.merch.name;
         }
 
         boughtMerchText.text = text;
@@ -40,7 +40,7 @@ public class EndOfRoundManager : MonoBehaviour
     {
         foreach (var item in GameManager.instance.merch)
         {
-            item.OnEndEffect(this);
+            item.merch.OnEndEffect(this);
         }
 
         return merchValue;
