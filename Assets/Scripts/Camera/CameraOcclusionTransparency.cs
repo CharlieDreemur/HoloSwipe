@@ -4,20 +4,16 @@ using UnityEngine;
 
 public class CameraOcclusionMaterialSwap : MonoBehaviour
 {
-    [Header("遮挡检测设置")]
     public Transform target;
     [Range(0.1f, 5f)]
-    public float checkRadius = 0.5f;  // 新增检测半径参数
+    public float checkRadius = 0.5f; 
     [Range(0.1f, 10f)]
     public float maxDistance = 5f;
     public LayerMask occlusionLayers;
-
-    [Header("材质设置")]
     public Material transparentMaterial;
     [Range(0.1f, 1f)]
     public float checkInterval = 0.2f;
 
-    [Header("调试设置")]
     public bool showDebugRay = true;
 
     private Dictionary<Renderer, Material[]> originalMaterials = new Dictionary<Renderer, Material[]>();
@@ -32,8 +28,6 @@ public class CameraOcclusionMaterialSwap : MonoBehaviour
             PerformOcclusionCheck();
             timer = 0;
         }
-
-        // 调试显示
         if (showDebugRay)
         {
             Debug.DrawRay(transform.position, (target.position - transform.position).normalized * maxDistance,
@@ -44,25 +38,22 @@ public class CameraOcclusionMaterialSwap : MonoBehaviour
     void PerformOcclusionCheck()
     {
         CleanupDestroyedRenderers();
-        // 计算目标点（角色中心向上偏移）
-        Vector3 targetPosition = target.position + Vector3.up * 1.0f; // 假设角色高度2米
+        Vector3 targetPosition = target.position + Vector3.up * 1.0f;
 
-        // 计算检测参数
         Vector3 origin = transform.position;
         Vector3 direction = (targetPosition - origin).normalized;
         float maxDistance = Vector3.Distance(origin, targetPosition);
 
-        // 使用精确的胶囊体检测
         RaycastHit[] hits = Physics.CapsuleCastAll(
             origin,
-            origin + direction * 0.1f, // 微小偏移形成有效胶囊体
+            origin + direction * 0.1f, 
             checkRadius,
             direction,
             maxDistance,
             occlusionLayers
         );
 
-        // 筛选有效遮挡物
+
         var validHits = hits.Where(hit =>
             Vector3.Dot(direction, (hit.point - origin).normalized) > 0.98f
         ).ToList();
@@ -76,7 +67,6 @@ public class CameraOcclusionMaterialSwap : MonoBehaviour
             }
         }
 
-        // 恢复不再被遮挡的物体
         foreach (var renderer in currentRenderers)
         {
             if (!newRenderers.Contains(renderer))
@@ -85,7 +75,6 @@ public class CameraOcclusionMaterialSwap : MonoBehaviour
             }
         }
 
-        // 处理新遮挡物
         foreach (var renderer in newRenderers)
         {
             if (!originalMaterials.ContainsKey(renderer))
@@ -163,12 +152,10 @@ public class CameraOcclusionMaterialSwap : MonoBehaviour
     {
         if (target && showDebugRay)
         {
-            // 绘制精确检测区域
             Gizmos.color = Color.cyan;
             Vector3 targetPos = target.position + Vector3.up * 1.0f;
             Gizmos.DrawLine(transform.position, targetPos);
 
-            // 绘制检测胶囊体
             Vector3 direction = (targetPos - transform.position).normalized;
             Gizmos.DrawWireSphere(transform.position, checkRadius);
             Gizmos.DrawWireSphere(transform.position + direction * maxDistance, checkRadius);
