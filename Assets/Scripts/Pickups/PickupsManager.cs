@@ -5,7 +5,7 @@ public class PickupsManager : MonoBehaviour
     public int day; // day #
 
     [SerializeField] GameManager gm; //This is where I would put the GameManager, IF I HAD ONE
-    [SerializeField] GameObject PlayerCharacter; //will pass this onto disasters spawned
+    [SerializeField] GameObject playerCharacter; //will pass this onto disasters spawned
     [SerializeField] Canvas canvas;
 
     [SerializeField] float spawnTimeMin;
@@ -32,13 +32,14 @@ public class PickupsManager : MonoBehaviour
 
     public Vector3 playerloc()
     {
-        return new Vector3(PlayerCharacter.transform.position.x, 0, PlayerCharacter.transform.position.z);
+        return new Vector3(playerCharacter.transform.position.x, 0, playerCharacter.transform.position.z);
     }
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        luck = playerCharacter.GetComponent<PlayerStatManager>().luck;
         float luckMult = 1 + luck * 0.01f;
         nextSpawn = Random.Range(spawnTimeMin / (luckMult), spawnTimeMax / (luckMult));
     }
@@ -46,6 +47,7 @@ public class PickupsManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        luck = playerCharacter.GetComponent<PlayerStatManager>().luck;
         float luckMult = 1 + luck * 0.01f;
         timePassed += Time.deltaTime;
         if (timePassed > nextSpawn)
@@ -57,8 +59,66 @@ public class PickupsManager : MonoBehaviour
 
     void spawnRandom()
     {
-        float choice = Random.Range(0, baseCoinBagChance + baseCoinChance + baseLitterChance + baseLootCrateChance);
+        float choice = Random.Range(0,   baseLitterChance + baseCoinChance + 0.3f * luck + baseCoinBagChance + 0.6f * luck +  baseLootCrateChance +0.1f*luck);
         //odds are also modified by luck
+        if (choice < baseLitterChance)
+        {
+            //spawn litter
+            float x = Random.Range(minX, maxX);
+            float z = Random.Range(minZ, maxZ);
+            while (Vector3.Distance(new Vector3(x, 1, z), playerloc()) < minDist)
+            {
+                x = Random.Range(minX, maxX);
+                z = Random.Range(minZ, maxZ);
+            }
+            GameObject temp = Instantiate(litterPrefab);
+            temp.GetComponent<Pickup>().playerCharacter = playerCharacter;
+            temp.GetComponent<Pickup>().gm = gm;
+            temp.transform.position = new Vector3(x, 1, z);
+        } else if (choice < baseLitterChance + baseCoinChance + 0.3f * luck)
+        {
+            //spawn coin
+            float x = Random.Range(minX, maxX);
+            float z = Random.Range(minZ, maxZ);
+            while (Vector3.Distance(new Vector3(x, 1, z), playerloc()) < minDist)
+            {
+                x = Random.Range(minX, maxX);
+                z = Random.Range(minZ, maxZ);
+            }
+            GameObject temp = Instantiate(coinPrefab);
+            temp.GetComponent<Pickup>().playerCharacter = playerCharacter;
+            temp.GetComponent<Pickup>().gm = gm;
+            temp.transform.position = new Vector3(x, 1, z);
+        } else if (choice < baseLitterChance + baseCoinChance + 0.3f * luck + baseCoinBagChance + 0.6f * luck)
+        {
+            //spawn coinbag
+            float x = Random.Range(minX, maxX);
+            float z = Random.Range(minZ, maxZ);
+            while (Vector3.Distance(new Vector3(x, 1, z), playerloc()) < minDist)
+            {
+                x = Random.Range(minX, maxX);
+                z = Random.Range(minZ, maxZ);
+            }
+            GameObject temp = Instantiate(coinBagPrefab);
+            temp.GetComponent<Pickup>().playerCharacter = playerCharacter;
+            temp.GetComponent<Pickup>().gm = gm;
+            temp.transform.position = new Vector3(x, 1, z);
+        } else
+        {
+            //spawn lootCrate
+            float x = Random.Range(minX, maxX);
+            float z = Random.Range(minZ, maxZ);
+            while (Vector3.Distance(new Vector3(x, 0, z), playerloc()) < minDist)
+            {
+                x = Random.Range(minX, maxX);
+                z = Random.Range(minZ, maxZ);
+            }
+            GameObject temp = Instantiate(lootCratePrefab);
+            temp.GetComponent<Pickup>().playerCharacter = playerCharacter;
+            temp.GetComponent<Pickup>().gm = gm;
+            temp.transform.position = new Vector3(x, 0, z);
+        }
+
     }
 
 }
