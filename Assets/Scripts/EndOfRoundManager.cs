@@ -9,11 +9,13 @@ public class EndOfRoundManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI boughtMerchText, valueText, nextValueText, moneyText;
 
-
+    public int merchValue;
     bool madeValue;
 
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         int playerValue = CalculateValue();
         madeValue = playerValue >= GameManager.instance.neededValue;
 

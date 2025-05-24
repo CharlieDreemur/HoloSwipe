@@ -13,8 +13,13 @@ public class MerchUIObject : MonoBehaviour
 
     int rotIndex = 1;
 
+    public bool TestObject = false;
+
     private void Awake()
     {
+        if (TestObject == true)
+            return;
+
         if (merch == null)
             return;
 
