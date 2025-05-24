@@ -6,13 +6,16 @@ public class PlayerInventory : MonoBehaviour
 {
     [SerializeField] float pickUpRange;
     [SerializeField] LayerMask merchLayer;
-    [SerializeField] int money;
+    public int money;
 
     [SerializeField] MerchDisplayUI merchDisplay;
 
     MerchBehaviour nearbyMerch;
 
     public PlayerStatManager playerStatManager;
+
+    public delegate void ValueChange(int newValue);
+    public ValueChange moneyChange;
 
     private void Start()
     {
@@ -74,10 +77,20 @@ public class PlayerInventory : MonoBehaviour
         if (money < merchInstance.cost)
             return;
 
-        money -= merchInstance.cost;
+        ChangeMoney(-merchInstance.cost);
         InventoryUIManager.newItem = merchInstance.merch;
         InventoryUIManager.OpenInventory();
         Destroy(merchInstance.gameObject);
+    }
+
+    public void ChangeMoney(int amount) 
+    {
+        money += amount;
+
+        if(moneyChange != null) 
+        {
+            moneyChange(money);
+        }
     }
 
     void CalculateStats() // calculate total stats given by the inventory, then relays it to player stat manager
