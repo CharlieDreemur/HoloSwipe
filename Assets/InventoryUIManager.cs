@@ -40,6 +40,8 @@ public class InventoryUIManager : MonoBehaviour
     {
         PrepareGrid();
 
+        Cursor.lockState = CursorLockMode.None;
+
         if(newItem != null) 
         {
             MerchUIObject newItemInstance = Instantiate(merchUIObject, merchParent);
@@ -286,6 +288,7 @@ public class InventoryUIManager : MonoBehaviour
     public void CloseInventory() 
     {
         GameManager.instance.merch = merchInstances;
+        Cursor.lockState = CursorLockMode.Locked;
         SceneManager.UnloadSceneAsync("InventoryScene");
     }
 }

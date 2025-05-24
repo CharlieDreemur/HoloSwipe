@@ -16,8 +16,6 @@ public class GameManager : MonoBehaviour
 
     public PlayerStats playerStats = new PlayerStats();
 
-
-
     private void Start()
     {
         if (instance != null)
