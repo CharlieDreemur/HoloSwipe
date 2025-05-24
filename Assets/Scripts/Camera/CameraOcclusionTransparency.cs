@@ -9,6 +9,7 @@ public class CameraOcclusionMaterialSwap : MonoBehaviour
     public float checkRadius = 0.5f; 
     [Range(0.1f, 10f)]
     public float maxDistance = 5f;
+    
     public LayerMask occlusionLayers;
     public Material transparentMaterial;
     [Range(0.1f, 1f)]
