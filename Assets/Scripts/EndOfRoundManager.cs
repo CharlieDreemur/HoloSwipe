@@ -9,12 +9,16 @@ public class EndOfRoundManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI boughtMerchText, valueText, nextValueText, moneyText;
 
-    public int merchValue;
+
+    bool madeValue;
 
     private void Start()
     {
+        int playerValue = CalculateValue();
+        madeValue = playerValue >= GameManager.instance.neededValue;
+
         DisplayBoghtMerch();
-        valueText.text = "Total Value : " + CalculateValue() + "/" + GameManager.instance.neededValue;
+        valueText.text = "Total Value : " + playerValue + "/" + GameManager.instance.neededValue;
         moneyText.text = "Player Money : " + GameManager.instance.playerMoney + "+" + GameManager.instance.salary;
         GameManager.instance.ProgressDay();
         nextValueText.text = "Next Day Value: " + GameManager.instance.neededValue; 
@@ -46,8 +50,11 @@ public class EndOfRoundManager : MonoBehaviour
         return merchValue;
     }
 
-    public void GoBackToGame() 
+    public void Proceed() 
     {
-        SceneManager.LoadScene("Game Scene 1");
+        if(madeValue)
+            SceneManager.LoadScene("PreCon");
+        else
+            SceneManager.LoadScene("GameOverScene");
     }
 }

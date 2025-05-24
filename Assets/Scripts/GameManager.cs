@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     
-    int day = 1;
+    public int day = 1;
     public int neededValue = 10;
     public List<MerchInstance> merch;
 
