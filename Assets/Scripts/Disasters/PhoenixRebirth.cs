@@ -27,6 +27,7 @@ public class PhoenixRebirth : Disaster
         timePassed += Time.deltaTime;
         innerCircle.transform.localScale = new Vector3(radius * timePassed / delay, 0.015f, radius * timePassed / delay);
 
+
         if (timePassed > delay)
         {
             flames.SetActive(false);
