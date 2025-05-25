@@ -20,6 +20,8 @@ public class DisasterManager : MonoBehaviour
     public float yagooReload; //how fast new yagoos spawn after the day ends
     private float nextYagoo = 0;
 
+    public GameObject phoenixRebirthWarning, eldritchRitualWarning, timeParadoxWarning, sharkAttackWarning, reaperHuntWarning, yagooWarning, lootWarning;
+
     [SerializeField] float minX, maxX, minZ, maxZ; //bounds of the spawn location
     //We can give Mori/Yagoo set spawn locations cause otherwise its annoying to make sure theyre not in walls
 
@@ -53,6 +55,11 @@ public class DisasterManager : MonoBehaviour
         }
         if (timePassed > dayLength + nextYagoo)
         {
+            if (nextYagoo == 0)
+            {
+                resetWarnings();
+                yagooWarning.SetActive(true);
+            }
             Yagoo();
             nextYagoo += yagooReload;
         }
@@ -86,6 +93,8 @@ public class DisasterManager : MonoBehaviour
     {
         float x = playerloc().x + Random.insideUnitCircle.x * rebirthMaxDist;
         float z = playerloc().z + Random.insideUnitCircle.y * rebirthMaxDist;
+        resetWarnings();
+        phoenixRebirthWarning.SetActive(true);
         GameObject temp = Instantiate(phoenixRebirthPrefab);
         temp.transform.position = new Vector3(x, 0, z);
         temp.GetComponent<Disaster>().day = day;
@@ -100,6 +109,8 @@ public class DisasterManager : MonoBehaviour
             x = Random.Range(minX, maxX);
             z = Random.Range(minZ, maxZ);
         }
+        resetWarnings();
+        timeParadoxWarning.SetActive(true);
         GameObject temp = Instantiate(timeParadoxPrefab);
         temp.GetComponent<Disaster>().playerCharacter = PlayerCharacter;
         temp.transform.position = new Vector3(x, 0, z);
@@ -110,7 +121,8 @@ public class DisasterManager : MonoBehaviour
     {
         float x = playerloc().x;
         float z = playerloc().z;
-        
+        resetWarnings();
+        sharkAttackWarning.SetActive(true);
         GameObject temp = Instantiate(sharkAttackPrefab);
         temp.transform.position = new Vector3(x, 0, z);
         temp.GetComponent<Disaster>().day = day;
@@ -125,6 +137,8 @@ public class DisasterManager : MonoBehaviour
             x = playerloc().x + Random.insideUnitCircle.x * huntMaxDist;
             z = playerloc().z + Random.insideUnitCircle.y * huntMaxDist;
         }
+        resetWarnings();
+        reaperHuntWarning.SetActive(true);
         GameObject temp = Instantiate(reaperHuntPrefab);
         temp.transform.position = new Vector3(x, 1, z);
         temp.GetComponent<Disaster>().playerCharacter = PlayerCharacter;
@@ -135,6 +149,8 @@ public class DisasterManager : MonoBehaviour
 
     void EldritchRitual() //spawns at exactly (0,0,0), needs camera + player passed in
     {
+        resetWarnings();
+        eldritchRitualWarning.SetActive(true);
         GameObject temp = Instantiate(eldritchRitualPrefab);
         temp.transform.position = new Vector3(0, 0, 0);
         temp.GetComponent<Disaster>().playerCharacter = PlayerCharacter;
@@ -155,6 +171,17 @@ public class DisasterManager : MonoBehaviour
         temp.transform.position = new Vector3(x, 1, z);
         temp.GetComponent<Disaster>().playerCharacter = PlayerCharacter;
         temp.GetComponent<Disaster>().day = day;
+    }
+
+    void resetWarnings()
+    {
+        phoenixRebirthWarning.SetActive(false);
+        eldritchRitualWarning.SetActive(false);
+        timeParadoxWarning.SetActive(false);
+        sharkAttackWarning.SetActive(false);
+        yagooWarning.SetActive(false);
+        reaperHuntWarning.SetActive(false);
+        lootWarning.SetActive(false);
     }
 
     bool inBounds(Vector3 checkVector) //checks whether a vector is in the bounds of the map, 

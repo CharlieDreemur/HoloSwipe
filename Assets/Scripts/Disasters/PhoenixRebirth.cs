@@ -19,7 +19,8 @@ public class PhoenixRebirth : Disaster
         delay = delay / (1 + speedIncrease*day); // fires faster on later days
         duration = duration / (1 + speedIncrease * day); // duration also decreases cause its not really meant to be a duration disaster
         outerCircle.transform.localScale = new Vector3(radius, 0.01f, radius);
-        
+        flames.transform.localScale = new Vector3(radius, flameHeight, radius);
+
     }
 
     private void Update() //not using a coroutine so it runs on gametime (pause menu etc)
