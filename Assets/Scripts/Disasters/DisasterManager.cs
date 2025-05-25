@@ -14,6 +14,7 @@ public class DisasterManager : MonoBehaviour
     [SerializeField] float spawnTimeDecrease; // how much faster disasters spawn as days pass, its 1 + spawnTimeInc
     [SerializeField] float minDist; //minimum distance spawns from player
     [SerializeField] float huntMaxDist; //max distance mori/yagoo can spawn from player
+    [SerializeField] float rebirthMaxDist;
     public float dayLength; //can also grab this from Game Manager
 
     public float yagooReload; //how fast new yagoos spawn after the day ends
@@ -81,10 +82,15 @@ public class DisasterManager : MonoBehaviour
         }
     }
 
-    void PhoenixRebirth() //spawns totally randomly
+    void PhoenixRebirth() //spawns near player
     {
-        float x = Random.Range(minX, maxX);
-        float z = Random.Range(minZ, maxZ);
+        float x = playerloc().x + Random.insideUnitCircle.x * rebirthMaxDist;
+        float z = playerloc().z + Random.insideUnitCircle.y * rebirthMaxDist;
+        while (!inBounds(new Vector3(x, 1, z)))
+        {
+            x = playerloc().x + Random.insideUnitCircle.x * rebirthMaxDist;
+            z = playerloc().z + Random.insideUnitCircle.y * rebirthMaxDist;
+        }
         GameObject temp = Instantiate(phoenixRebirthPrefab);
         temp.transform.position = new Vector3(x, 0, z);
         temp.GetComponent<Disaster>().day = day;
@@ -130,6 +136,8 @@ public class DisasterManager : MonoBehaviour
         temp.GetComponent<Disaster>().day = day;
     }
 
+    
+
     void EldritchRitual() //spawns at exactly (0,0,0), needs camera + player passed in
     {
         GameObject temp = Instantiate(eldritchRitualPrefab);
@@ -152,5 +160,26 @@ public class DisasterManager : MonoBehaviour
         temp.transform.position = new Vector3(x, 1, z);
         temp.GetComponent<Disaster>().playerCharacter = PlayerCharacter;
         temp.GetComponent<Disaster>().day = day;
+    }
+
+    bool inBounds(Vector3 checkVector) //checks whether a vector is in the bounds of the map, 
+    {
+        if (checkVector.x > maxX)
+        {
+            return false;
+        }
+        if (checkVector.x < minX)
+        {
+            return false;
+        }
+        if (checkVector.z > maxZ)
+        {
+            return false;
+        }
+        if (checkVector.z < minZ)
+        {
+            return false;
+        }
+        return true;
     }
 }
