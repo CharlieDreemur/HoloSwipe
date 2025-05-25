@@ -23,6 +23,7 @@ public class PlayerInventory : MonoBehaviour
         if (GameManager.instance == null)
             return;
         money = GameManager.instance.playerMoney;
+        ChangeMoney(0);
     }
 
     private void Update()

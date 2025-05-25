@@ -11,7 +11,7 @@ public class InventoryUIManager : MonoBehaviour
 
     public InventoryTile[,] grid = new InventoryTile[gridSize, gridSize];
 
-    public MerchUIObject heldMerchUIObject;
+    [HideInInspector] public MerchUIObject heldMerchUIObject;
 
     [SerializeField] Transform UITileParent;
     [SerializeField] InventoryTile gridUiTile;
