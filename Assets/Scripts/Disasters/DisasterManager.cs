@@ -86,11 +86,6 @@ public class DisasterManager : MonoBehaviour
     {
         float x = playerloc().x + Random.insideUnitCircle.x * rebirthMaxDist;
         float z = playerloc().z + Random.insideUnitCircle.y * rebirthMaxDist;
-        while (!inBounds(new Vector3(x, 1, z)))
-        {
-            x = playerloc().x + Random.insideUnitCircle.x * rebirthMaxDist;
-            z = playerloc().z + Random.insideUnitCircle.y * rebirthMaxDist;
-        }
         GameObject temp = Instantiate(phoenixRebirthPrefab);
         temp.transform.position = new Vector3(x, 0, z);
         temp.GetComponent<Disaster>().day = day;
