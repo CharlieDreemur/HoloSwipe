@@ -34,6 +34,7 @@ public class InventoryUIManager : MonoBehaviour
     public static void OpenInventory() 
     {
         SceneManager.LoadScene("InventoryScene", LoadSceneMode.Additive);
+        Time.timeScale = 0f;
     }
 
     private void Start()
@@ -210,7 +211,7 @@ public class InventoryUIManager : MonoBehaviour
             heldMerchUIObject.transform.localPosition = new Vector3(heldMerchUIObject.transform.localPosition.x, heldMerchUIObject.transform.localPosition.y, 0);
         }
 
-        if (Input.GetMouseButtonDown(2)) 
+        if (Input.GetMouseButtonDown(2) || Input.GetKeyDown(KeyCode.Space)) 
         {
             if(heldMerchUIObject != null) 
             {
@@ -232,8 +233,11 @@ public class InventoryUIManager : MonoBehaviour
                     }
                     else
                     {
-                        heldMerchUIObject.transform.localPosition = Vector3.zero;
+                        heldMerchUIObject.transform.localPosition = new Vector3(-315, -150, -10); //only tested with trident but it p much just has to be apparent that it failed to place
                     }
+                } else
+                {
+                    heldMerchUIObject.transform.localPosition = new Vector3(-315, -150, -10); //only tested with trident but it p much just has to be apparent that it failed to place
                 }
 
                 heldMerchUIObject = null;
@@ -287,6 +291,7 @@ public class InventoryUIManager : MonoBehaviour
 
     public void CloseInventory() 
     {
+        Time.timeScale = 1f;
         GameManager.instance.merch = merchInstances;
         Cursor.lockState = CursorLockMode.Locked;
         SceneManager.UnloadSceneAsync("InventoryScene");
