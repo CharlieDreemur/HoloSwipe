@@ -104,7 +104,7 @@ public class DisasterManager : MonoBehaviour
     {
         float x = Random.Range(minX, maxX);
         float z = Random.Range(minZ, maxZ);
-        while (Vector3.Distance(new Vector3(x, 0, z), playerloc()) < minDist*2.5f) // extra large minimum distance cause its so big
+        while (Vector3.Distance(new Vector3(x, 0, z), playerloc()) < minDist) // extra large minimum distance cause its so big
         {
             x = Random.Range(minX, maxX);
             z = Random.Range(minZ, maxZ);

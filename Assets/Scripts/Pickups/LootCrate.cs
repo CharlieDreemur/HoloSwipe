@@ -47,7 +47,7 @@ public class LootCrate : MonoBehaviour
         }
         if (touchingPlayer)
         {
-            gm.playerMoney += value;
+            playerCharacter.GetComponent<PlayerInventory>().ChangeMoney(value);
             InventoryUIManager.newItem = merch;
             InventoryUIManager.OpenInventory();
             Destroy(gameObject);
