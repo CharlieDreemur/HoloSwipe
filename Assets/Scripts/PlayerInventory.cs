@@ -48,14 +48,24 @@ public class PlayerInventory : MonoBehaviour
             return;
         }
 
+        MerchBehaviour closeestMerch = null;
+        float closeestDistance = 100;
+
         foreach (var item in col)
         {
             if (item.transform.parent.TryGetComponent<MerchBehaviour>(out MerchBehaviour merchInstance))
             {
-                SetNearbyMerch(merchInstance);
-                return;
+                float distanceFromPlayer = Vector3.Distance(merchInstance.transform.position, transform.position);
+
+                if(distanceFromPlayer < closeestDistance) 
+                {
+                    closeestDistance = distanceFromPlayer;
+                    closeestMerch = merchInstance;
+                }
             }
         }
+
+        SetNearbyMerch(closeestMerch);
     }
 
     void SetNearbyMerch(MerchBehaviour merchBehaviour) 

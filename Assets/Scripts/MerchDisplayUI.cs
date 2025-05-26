@@ -17,8 +17,13 @@ public class MerchDisplayUI : MonoBehaviour
             return;
         }
 
+        string merchName = merch.merch.name;
+
+        merchName = merchName.Replace("_MerchSO", "");
+
+        this.merchName.text = merchName;
+
         Vector3 temp = cam.WorldToScreenPoint(merch.tf.position);
-        merchName.text = merch.merch.name;
         merchCost.text = merch.cost.ToString();
         merchInfo.transform.position = temp + displayOffset*canvas.scaleFactor;
         merchInfo.gameObject.SetActive(true);
@@ -34,7 +39,11 @@ public class MerchDisplayUI : MonoBehaviour
             return;
         }
 
-        merchName.text = merch.merch.name;
+        string merchName = merch.merch.name;
+
+        merchName = merchName.Replace("_MerchSO", "");
+
+        this.merchName.text = merchName;
         merchCost.text = merch.merch.cost.ToString();
         merchInfo.gameObject.SetActive(true);
         merchStats.text = merch.GetDescription();
