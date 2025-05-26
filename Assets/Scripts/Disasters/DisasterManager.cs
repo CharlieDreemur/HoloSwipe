@@ -46,7 +46,7 @@ public class DisasterManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //day = gm.day; //need to be able to access day from game manager 
+        day = gm.day; //need to be able to access day from game manager 
         timePassed += Time.deltaTime;
         if (timePassed > nextSpawn)
         {
@@ -104,7 +104,7 @@ public class DisasterManager : MonoBehaviour
     {
         float x = Random.Range(minX, maxX);
         float z = Random.Range(minZ, maxZ);
-        while (Vector3.Distance(new Vector3(x, 0, z), playerloc()) < minDist)
+        while (Vector3.Distance(new Vector3(x, 0, z), playerloc()) < minDist*2.5f) // extra large minimum distance cause its so big
         {
             x = Random.Range(minX, maxX);
             z = Random.Range(minZ, maxZ);
