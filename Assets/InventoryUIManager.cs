@@ -31,6 +31,8 @@ public class InventoryUIManager : MonoBehaviour
 
     [SerializeField] Transform newItemPos;
 
+    [SerializeField] MerchDisplayUI merchDisplayUI;
+
     public static void OpenInventory() 
     {
         SceneManager.LoadScene("InventoryScene", LoadSceneMode.Additive);
@@ -285,6 +287,7 @@ public class InventoryUIManager : MonoBehaviour
             heldMerchUIObject = ray.collider.transform.parent.GetComponent<MerchUIObject>();
             heldMerchUIObject.ClearInventoryTiles();
             merchInstances.Remove(heldMerchUIObject.merch);
+            merchDisplayUI.DisplayMerch(heldMerchUIObject.merch);
         }
 
     }

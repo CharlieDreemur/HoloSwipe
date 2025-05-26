@@ -9,4 +9,9 @@ public class ValueMerchEffect : MerchEffect
     {
         endOfRoundManager.merchValue += value;
     }
+
+    public override string GetEffectString()
+    {
+        return "+" + value + " fan value";
+    }
 }

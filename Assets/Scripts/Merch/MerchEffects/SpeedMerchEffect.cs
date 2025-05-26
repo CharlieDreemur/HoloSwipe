@@ -14,4 +14,8 @@ public class SpeedMerchEffect : MerchEffect
     {
         playerStatManager.playerStats.speed -= speedAmount;
     }
+    public override string GetEffectString()
+    {
+        return "+" + speedAmount + " speed";
+    }
 }
