@@ -18,7 +18,7 @@ public class EldritchManager : Disaster
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Camera.GetComponent<GameCamera>().shake = spawnTime;
+        Camera.GetComponent<CameraShake>().shake = spawnTime;
         for(int i = 0; i < numTentacles; i++)
         {
             GameObject temp = Instantiate(TentaclePrefab);
@@ -39,7 +39,7 @@ public class EldritchManager : Disaster
         timePassed += Time.deltaTime;
         if (timePassed > spawnTime + duration)
         {
-            Camera.GetComponent<GameCamera>().shake = spawnTime;
+            Camera.GetComponent<CameraShake>().shake = spawnTime;
             Destroy(gameObject);
         }
     }

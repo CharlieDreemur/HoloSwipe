@@ -68,7 +68,7 @@ public class PickupsManager : MonoBehaviour
             //spawn litter
             float x = Random.Range(minX, maxX);
             float z = Random.Range(minZ, maxZ);
-            while (Vector3.Distance(new Vector3(x, 1, z), playerloc()) < minDist)
+            while (Vector3.Distance(new Vector3(x, 0.5f, z), playerloc()) < minDist)
             {
                 x = Random.Range(minX, maxX);
                 z = Random.Range(minZ, maxZ);
@@ -76,13 +76,13 @@ public class PickupsManager : MonoBehaviour
             GameObject temp = Instantiate(litterPrefab);
             temp.GetComponent<Pickup>().playerCharacter = playerCharacter;
             temp.GetComponent<Pickup>().gm = gm;
-            temp.transform.position = new Vector3(x, 1, z);
+            temp.transform.position = new Vector3(x, 0.5f, z);
         } else if (choice < baseLitterChance + baseCoinChance + 0.3f * luck)
         {
             //spawn coin
             float x = Random.Range(minX, maxX);
             float z = Random.Range(minZ, maxZ);
-            while (Vector3.Distance(new Vector3(x, 1, z), playerloc()) < minDist)
+            while (Vector3.Distance(new Vector3(x, 0.5f, z), playerloc()) < minDist)
             {
                 x = Random.Range(minX, maxX);
                 z = Random.Range(minZ, maxZ);
@@ -90,13 +90,13 @@ public class PickupsManager : MonoBehaviour
             GameObject temp = Instantiate(coinPrefab);
             temp.GetComponent<Pickup>().playerCharacter = playerCharacter;
             temp.GetComponent<Pickup>().gm = gm;
-            temp.transform.position = new Vector3(x, 1, z);
+            temp.transform.position = new Vector3(x, 0.5f, z);
         } else if (choice < baseLitterChance + baseCoinChance + 0.3f * luck + baseCoinBagChance + 0.6f * luck)
         {
             //spawn coinbag
             float x = Random.Range(minX, maxX);
             float z = Random.Range(minZ, maxZ);
-            while (Vector3.Distance(new Vector3(x, 1, z), playerloc()) < minDist)
+            while (Vector3.Distance(new Vector3(x, 0.5f, z), playerloc()) < minDist)
             {
                 x = Random.Range(minX, maxX);
                 z = Random.Range(minZ, maxZ);
@@ -104,7 +104,7 @@ public class PickupsManager : MonoBehaviour
             GameObject temp = Instantiate(coinBagPrefab);
             temp.GetComponent<Pickup>().playerCharacter = playerCharacter;
             temp.GetComponent<Pickup>().gm = gm;
-            temp.transform.position = new Vector3(x, 1, z);
+            temp.transform.position = new Vector3(x, 0.5f, z);
         } else
         {
             //spawn lootCrate
@@ -120,7 +120,7 @@ public class PickupsManager : MonoBehaviour
             GameObject temp = Instantiate(lootCratePrefab);
             temp.GetComponent<LootCrate>().playerCharacter = playerCharacter;
             temp.GetComponent<LootCrate>().gm = gm;
-            temp.transform.position = new Vector3(x, 2.3f, z);
+            temp.transform.position = new Vector3(x, 1.2f, z);
         }
 
     }

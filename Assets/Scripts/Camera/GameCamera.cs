@@ -20,7 +20,7 @@ public class GameCamera : MonoBehaviour
     void Update()
     {
         
-        transform.position = new Vector3(playerloc.position.x, playerloc.position.y + height, playerloc.position.z - height / Mathf.Tan(angle * Mathf.PI/180));
+        /*transform.position = new Vector3(playerloc.position.x, playerloc.position.y + height, playerloc.position.z - height / Mathf.Tan(angle * Mathf.PI/180));
         Mathf.Clamp(transform.position.x, minX, maxX);
         Mathf.Clamp(transform.position.z, minZ, maxZ);
         if (shake > 0)
@@ -30,7 +30,7 @@ public class GameCamera : MonoBehaviour
         } else
         {
             shake = 0;
-        }
+        }*/
     }
 
     private void OnTriggerEnter(Collider other)
