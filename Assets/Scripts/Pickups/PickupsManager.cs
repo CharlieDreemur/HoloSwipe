@@ -28,6 +28,8 @@ public class PickupsManager : MonoBehaviour
     private float timePassed = 0; // how much time has passed since the last disaster
 
 
+    public GameObject phoenixRebirthWarning, eldritchRitualWarning, timeParadoxWarning, sharkAttackWarning, reaperHuntWarning, yagooWarning, lootWarning;
+
     [SerializeField] GameObject litterPrefab, coinPrefab, coinBagPrefab, lootCratePrefab; // reference prefabs so they can spawn
 
     public Vector3 playerloc()
@@ -113,12 +115,29 @@ public class PickupsManager : MonoBehaviour
                 x = Random.Range(minX, maxX);
                 z = Random.Range(minZ, maxZ);
             }
+            resetWarnings();
+            lootWarning.SetActive(true);
             GameObject temp = Instantiate(lootCratePrefab);
-            temp.GetComponent<Pickup>().playerCharacter = playerCharacter;
-            temp.GetComponent<Pickup>().gm = gm;
-            temp.transform.position = new Vector3(x, 0, z);
+            temp.GetComponent<LootCrate>().playerCharacter = playerCharacter;
+            temp.GetComponent<LootCrate>().gm = gm;
+            temp.transform.position = new Vector3(x, 2.3f, z);
         }
 
     }
 
+    MerchSO randMech() //maybe will make this eventually
+    {
+        return null; 
+    }
+
+    void resetWarnings()
+    {
+        phoenixRebirthWarning.SetActive(false);
+        eldritchRitualWarning.SetActive(false);
+        timeParadoxWarning.SetActive(false);
+        sharkAttackWarning.SetActive(false);
+        yagooWarning.SetActive(false);
+        reaperHuntWarning.SetActive(false);
+        lootWarning.SetActive(false);
+    }
 }
