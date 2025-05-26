@@ -16,4 +16,6 @@ public abstract class MerchEffect : ScriptableObject
     {
         
     }
+
+    public abstract string GetEffectString();
 }

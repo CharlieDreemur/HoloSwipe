@@ -11,4 +11,18 @@ public class MerchInstance
     {
         merch = newMerch;
     }
+
+
+    public string GetDescription()
+    {
+        string description = "";
+
+        foreach (var item in merch.effects)
+        {
+            description += item.GetEffectString();
+            description += "<br>";
+        }
+
+        return description;
+    }
 }

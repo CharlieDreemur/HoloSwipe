@@ -22,7 +22,22 @@ public class MerchDisplayUI : MonoBehaviour
         merchCost.text = merch.cost.ToString();
         merchInfo.transform.position = temp + displayOffset*canvas.scaleFactor;
         merchInfo.gameObject.SetActive(true);
+        merchStats.text = merch.GetDescription();
         
-        
+    }
+
+    public void DisplayMerch(MerchInstance merch)
+    {
+        if (merch == null)
+        {
+            merchInfo.gameObject.SetActive(false);
+            return;
+        }
+
+        merchName.text = merch.merch.name;
+        merchCost.text = merch.merch.cost.ToString();
+        merchInfo.gameObject.SetActive(true);
+        merchStats.text = merch.GetDescription();
+
     }
 }

@@ -4,4 +4,9 @@ using UnityEngine;
 public class SalaryMerchEffect : MerchEffect
 {
     public int salaryAmount;
+
+    public override string GetEffectString()
+    {
+        return "+" + salaryAmount + " salary";
+    }
 }
