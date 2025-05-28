@@ -14,7 +14,7 @@ public class StatsDisplay : MonoBehaviour
     void Update()
     {
         fanScore.text = "" + PlayerStatManager.fanScore;
-        speedMult.text = "" + (PlayerStatManager.speedMultiplier-1)*100 + "%";
+        speedMult.text = "+" + (PlayerStatManager.speedMultiplier-1)*100 + "%";
         salary.text = "" + PlayerStatManager.salary + "";
         discount.text = "-" + PlayerStatManager.discount*100 + "%";
         luck.text = "" + PlayerStatManager.luck + "";
