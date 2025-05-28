@@ -13,7 +13,7 @@ public class PlayerUI : MonoBehaviour
     private void Start()
     {
         moneyText.text = playerInventory.money.ToString();
-        timeText.text = timeManager.ToString();
+        timeText.text = timeManager.time.ToString();
         
 
         playerInventory.moneyChange += ChangeMoney;
