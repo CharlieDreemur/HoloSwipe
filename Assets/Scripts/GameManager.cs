@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public List<MerchInstance> merch;
 
     public int playerMoney = 10;
-    public int salary = 15;
+    //public int salary = 15;
 
     public PlayerStats playerStats = new PlayerStats();
 
@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     {
         neededValue = (int)(neededValue * 1.5f);
         day++;
-        playerMoney += salary;
+        playerMoney += (int)PlayerStatManager.salary;
     }
     
     public void EndDay(PlayerInventory inventory, PlayerStatManager playerStats) 
@@ -41,4 +41,6 @@ public class GameManager : MonoBehaviour
         playerMoney = inventory.money;
         SceneManager.LoadScene("EndOfRoundScoreboard");
     }
+
+    
 }

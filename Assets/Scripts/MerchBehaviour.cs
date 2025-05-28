@@ -20,7 +20,7 @@ public class MerchBehaviour : MonoBehaviour
     {
         this.merch = merch;
 
-        cost = merch.cost;
+        cost = (int) (merch.cost / PlayerStatManager.discount);
         GameObject merchInstance = Instantiate(merch.mesh, transform.position, Quaternion.identity, transform);
         merchInstance.GetComponent<MeshCollider>().convex = true;
         merchInstance.layer = LayerMask.NameToLayer("Merch");

@@ -294,9 +294,51 @@ public class InventoryUIManager : MonoBehaviour
 
     public void CloseInventory() 
     {
+
         Time.timeScale = 1f;
         GameManager.instance.merch = merchInstances;
+        CalculateStats();
         Cursor.lockState = CursorLockMode.Locked;
         SceneManager.UnloadSceneAsync("InventoryScene");
     }
+
+    void CalculateStats()
+    {
+        List<MerchInstance> list = GameManager.instance.merch;
+        float fanScore = 0, speedMult = 1, salary = PlayerStatManager.baseSalary , discount = 1, luck = 0;
+        foreach (MerchInstance temp in list)
+        {
+            
+            foreach (var item in temp.merch.effects)
+            {
+                switch (item.GetEffectType())
+                {
+                    case 1: //fan score
+                        fanScore += item.value;
+                        break;
+                    case 2: //speedMult
+                        speedMult += item.value * 0.01f;
+                        break;
+                    case 3: //salary
+                        salary += item.value;
+                        break;
+                    case 4: //discount
+                        discount += item.value * 0.01f;
+                        break;
+                    case 5: //luck
+                        luck += item.value;
+                        break;
+                }
+                
+            }
+        }
+        PlayerStatManager.fanScore = fanScore;
+        PlayerStatManager.speedMultiplier = speedMult;
+        PlayerStatManager.salary = salary;
+        PlayerStatManager.discount = discount;
+        PlayerStatManager.luck = luck;
+
+
+    }
+
 }

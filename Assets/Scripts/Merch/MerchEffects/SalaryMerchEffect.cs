@@ -3,10 +3,15 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SalaryMerchEffect", menuName = "Scriptable Objects/Merch Effect/SalaryMerchEffect")]
 public class SalaryMerchEffect : MerchEffect
 {
-    public int salaryAmount;
+    //public int salaryAmount;
 
     public override string GetEffectString()
     {
-        return "+" + salaryAmount + " salary";
+        return "+" + value + " salary";
+    }
+
+    public override int GetEffectType()
+    {
+        return 3;
     }
 }

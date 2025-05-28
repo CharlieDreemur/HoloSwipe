@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ValueMerchEffect", menuName = "Scriptable Objects/Merch Effect/ValueMerchEffect")]
-public class ValueMerchEffect : MerchEffect
+[CreateAssetMenu(fileName = "LuckMerchEffect", menuName = "Scriptable Objects/Merch Effect/LuckMerchEffect")]
+public class LuckMerchEffect : MerchEffect
 {
     //public int value;
 
@@ -12,10 +12,11 @@ public class ValueMerchEffect : MerchEffect
 
     public override string GetEffectString()
     {
-        return "+" + value + " fan score";
+        return "+" + value + " luck";
     }
+
     public override int GetEffectType()
     {
-        return 1;
+        return 5;
     }
 }

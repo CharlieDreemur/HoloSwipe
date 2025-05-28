@@ -41,7 +41,7 @@ public class PickupsManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        luck = playerCharacter.GetComponent<PlayerStatManager>().luck;
+        luck = PlayerStatManager.luck;
         float luckMult = 1 + luck * 0.01f;
         nextSpawn = Random.Range(spawnTimeMin / (luckMult), spawnTimeMax / (luckMult));
     }
@@ -49,7 +49,7 @@ public class PickupsManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        luck = playerCharacter.GetComponent<PlayerStatManager>().luck;
+        luck = PlayerStatManager.luck;
         float luckMult = 1 + luck * 0.01f;
         timePassed += Time.deltaTime;
         if (timePassed > nextSpawn)

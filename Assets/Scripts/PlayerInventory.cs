@@ -106,6 +106,6 @@ public class PlayerInventory : MonoBehaviour
 
     void CalculateStats() // calculate total stats given by the inventory, then relays it to player stat manager
     {
-
+        
     }
 }

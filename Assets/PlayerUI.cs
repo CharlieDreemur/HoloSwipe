@@ -6,6 +6,7 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI moneyText;
     [SerializeField] TextMeshProUGUI timeText;
 
+
     [SerializeField] PlayerInventory playerInventory;
     [SerializeField] TimeManager timeManager;
 
@@ -13,6 +14,7 @@ public class PlayerUI : MonoBehaviour
     {
         moneyText.text = playerInventory.money.ToString();
         timeText.text = timeManager.ToString();
+        
 
         playerInventory.moneyChange += ChangeMoney;
         timeManager.timeChange += ChangeTime;
@@ -27,4 +29,5 @@ public class PlayerUI : MonoBehaviour
     {
         timeText.text = amount.ToString();
     }
+
 }
