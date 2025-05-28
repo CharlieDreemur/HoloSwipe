@@ -5,7 +5,7 @@ public class PlayerStatManager : MonoBehaviour
     [SerializeField] StatsSO BaseStats;
     [SerializeField] ECM2.Character PlayerCharacter;
     [SerializeField] GameObject Player;
-    public static float speedMultiplier = 1, salary = 1, discount = 1, luck = 0, fanScoreMultiplier = 1, fanScore = 0, baseSalary;
+    public static float speedMultiplier = 1, salary = 1, discount = 0, luck = 0, fanScoreMultiplier = 1, fanScore = 0, baseSalary;
     public PlayerStats playerStats;
 
     public bool slowed;

@@ -68,6 +68,8 @@ public class InventoryUIManager : MonoBehaviour
                 SetMerchInArea(instance, instance.merch.inventoryPosition);
             }
         }
+        GameManager.instance.merch = merchInstances;
+        CalculateStats();
     }
 
     void PrepareGrid() 
@@ -223,7 +225,7 @@ public class InventoryUIManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0)) 
         {
-            if(heldMerchUIObject == null)
+            if (heldMerchUIObject == null)
                 ClickInArea();
             else 
             {
@@ -244,6 +246,8 @@ public class InventoryUIManager : MonoBehaviour
 
                 heldMerchUIObject = null;
             }
+            GameManager.instance.merch = merchInstances;
+            CalculateStats();
         }
     }
 
@@ -305,7 +309,7 @@ public class InventoryUIManager : MonoBehaviour
     void CalculateStats()
     {
         List<MerchInstance> list = GameManager.instance.merch;
-        float fanScore = 0, speedMult = 1, salary = PlayerStatManager.baseSalary , discount = 1, luck = 0;
+        float fanScore = 0, speedMult = 1, salary = PlayerStatManager.baseSalary , discount = 0, luck = 0;
         foreach (MerchInstance temp in list)
         {
             
@@ -337,8 +341,6 @@ public class InventoryUIManager : MonoBehaviour
         PlayerStatManager.salary = salary;
         PlayerStatManager.discount = discount;
         PlayerStatManager.luck = luck;
-
-
     }
 
 }
