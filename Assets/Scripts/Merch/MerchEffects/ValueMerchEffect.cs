@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ValueMerchEffect", menuName = "Scriptable Objects/Merch Effect/ValueMerchEffect")]
 public class ValueMerchEffect : MerchEffect
 {
-    //public int value;
+    public int value;
 
     public override void EndScreenEffect(EndOfRoundManager endOfRoundManager)
     {
@@ -13,6 +13,11 @@ public class ValueMerchEffect : MerchEffect
     public override string GetEffectString()
     {
         return "+" + value + " fan score";
+    }
+
+    public override float GetStatValue()
+    {
+        return value;
     }
     public override int GetEffectType()
     {

@@ -10,7 +10,9 @@ public class TimeManager : MonoBehaviour
 
     void Start()
     {
-        time = 60;
+        time = 60 + (int)PlayerStatManager.conTime;
+        if (timeChange != null)
+            timeChange(time);
         StartCoroutine(CountDownTimer());
     }
 
@@ -23,6 +25,9 @@ public class TimeManager : MonoBehaviour
 
             if (timeChange != null)
                 timeChange(time);
+
+            if (time <= 0)
+                break;
         }
     }
 
