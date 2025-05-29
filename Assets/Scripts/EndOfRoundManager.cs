@@ -44,12 +44,7 @@ public class EndOfRoundManager : MonoBehaviour
 
     int CalculateValue() 
     {
-        foreach (var item in GameManager.instance.merch)
-        {
-            item.merch.OnEndEffect(this);
-        }
-
-        return merchValue;
+        return (int)PlayerStatManager.fanScore;
     }
 
     public void Proceed() 

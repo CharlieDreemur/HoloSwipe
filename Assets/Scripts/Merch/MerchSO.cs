@@ -13,6 +13,7 @@ public class MerchSO : ScriptableObject
 
     public Vector2 zeroZeroPos = new Vector2(0, 0.45f);
     public float UISize = 1;
+    public Vector3 UIRotation;
 
     public void OnGetMerch(PlayerStatManager playerStatManager) 
     {

@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "LuckMerchEffect", menuName = "Scriptable Objects/Merch Effect/LuckMerchEffect")]
 public class LuckMerchEffect : MerchEffect
 {
-    //public int value;
+    public int value;
 
     public override void EndScreenEffect(EndOfRoundManager endOfRoundManager)
     {
@@ -13,6 +13,11 @@ public class LuckMerchEffect : MerchEffect
     public override string GetEffectString()
     {
         return "+" + value + " luck";
+    }
+
+    public override float GetStatValue()
+    {
+        return value;
     }
 
     public override int GetEffectType()

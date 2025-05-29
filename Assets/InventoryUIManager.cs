@@ -48,6 +48,7 @@ public class InventoryUIManager : MonoBehaviour
         if(newItem != null) 
         {
             MerchUIObject newItemInstance = Instantiate(merchUIObject, merchParent);
+            newItemInstance.transform.rotation = Quaternion.Euler( newItem.UIRotation);
             newItemInstance.transform.position = newItemPos.position;
             newItemInstance.SetMerch(new MerchInstance(newItem));
             newItem = null;
@@ -313,7 +314,7 @@ public class InventoryUIManager : MonoBehaviour
     void CalculateStats()
     {
         List<MerchInstance> list = GameManager.instance.merch;
-        float fanScore = 0, speedMult = 1, salary = PlayerStatManager.baseSalary , discount = 0, luck = 0;
+        float fanScore = 0, speedMult = 1, salary = PlayerStatManager.baseSalary , discount = 0, luck = 0, conTime = 0;
         foreach (MerchInstance temp in list)
         {
             
@@ -322,19 +323,22 @@ public class InventoryUIManager : MonoBehaviour
                 switch (item.GetEffectType())
                 {
                     case 1: //fan score
-                        fanScore += item.value;
+                        fanScore += item.GetStatValue();
                         break;
                     case 2: //speedMult
-                        speedMult += item.value * 0.01f;
+                        speedMult += item.GetStatValue() * 0.01f;
                         break;
                     case 3: //salary
-                        salary += item.value;
+                        salary += item.GetStatValue();
                         break;
                     case 4: //discount
-                        discount += item.value * 0.01f;
+                        discount += item.GetStatValue() * 0.01f;
                         break;
                     case 5: //luck
-                        luck += item.value;
+                        luck += item.GetStatValue();
+                        break;
+                    case 6: //conTime
+                        conTime += item.GetStatValue();
                         break;
                 }
                 
@@ -345,6 +349,7 @@ public class InventoryUIManager : MonoBehaviour
         PlayerStatManager.salary = salary;
         PlayerStatManager.discount = discount;
         PlayerStatManager.luck = luck;
+        PlayerStatManager.conTime = conTime;
     }
 
 }

@@ -2,7 +2,6 @@ using UnityEngine;
 
 public abstract class MerchEffect : ScriptableObject
 {
-    public int value;
     public virtual void OnPickUp(PlayerStatManager playerStatManager) 
     {
     
@@ -18,6 +17,11 @@ public abstract class MerchEffect : ScriptableObject
         
     }
 
+
+    public virtual float GetStatValue() 
+    {
+        return 0;
+    }
     public abstract string GetEffectString();
     public abstract int GetEffectType();
 }
