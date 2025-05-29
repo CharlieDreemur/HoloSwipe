@@ -27,13 +27,18 @@ public class PhoenixRebirth : Disaster
     {
         timePassed += Time.deltaTime;
         innerCircle.transform.localScale = new Vector3(radius * timePassed / delay, 0.015f, radius * timePassed / delay);
-
+        
+        if (timePassed < delay)
+        {
+            kiara.transform.Rotate(new Vector3(90 * Time.deltaTime / (delay), 0, 0));
+        }
 
         if (timePassed > delay)
         {
             flames.SetActive(false);
             if (timePassed < delay + duration)
             {
+                
                 innerCircle.SetActive(false);
                 outerCircle.SetActive(false);
                 flames.SetActive(true);
@@ -42,9 +47,11 @@ public class PhoenixRebirth : Disaster
                 {
                     EndDay();
                 }
-            } else
+            }
+            if (timePassed > delay)
             {
                 kiara.transform.position += new Vector3(0, kiaraAscensionSpeed*Time.deltaTime, 0); //takes flight
+                kiara.transform.Rotate(new Vector3(0, 540 * Time.deltaTime, 0)); //takes flight
             }
 
             if (timePassed > delay + duration + kiaraDuration) //just 2 seconds for the flames to dissipate
