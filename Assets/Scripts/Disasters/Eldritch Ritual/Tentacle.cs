@@ -39,6 +39,7 @@ public class Tentacle : Disaster
         {
            
             go.transform.position = new Vector3(go.transform.position.x, depth + height * timePassed / spawnTime, go.transform.position.z);
+
         }
         else if (timePassed > spawnTime + duration)
         {

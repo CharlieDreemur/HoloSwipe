@@ -40,13 +40,14 @@ public class DisasterManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        dayLength = 60 + PlayerStatManager.conTime;
         nextSpawn = Random.Range(spawnTimeMin/ (1 + spawnTimeDecrease * day), spawnTimeMax/ (1 + spawnTimeDecrease * day));
     }
 
     // Update is called once per frame
     void Update()
     {
-        dayLength = GameManager.instance.
+        
         day = gm.day; //need to be able to access day from game manager 
         timePassed += Time.deltaTime;
         if (timePassed > nextSpawn)
