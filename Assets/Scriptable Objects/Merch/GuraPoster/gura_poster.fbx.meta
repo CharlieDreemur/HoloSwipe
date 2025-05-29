@@ -3,7 +3,12 @@ guid: 0db2e8861c7349c4b9d6da1ca8501503
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gura_poster
+    second: {fileID: 2100000, guid: 93c95bbc144ebbd4da48dd5b0ed13772, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

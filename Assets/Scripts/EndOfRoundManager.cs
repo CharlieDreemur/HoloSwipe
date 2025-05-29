@@ -21,7 +21,7 @@ public class EndOfRoundManager : MonoBehaviour
 
         DisplayBoghtMerch();
         valueText.text = "Total Value : " + playerValue + "/" + GameManager.instance.neededValue;
-        moneyText.text = "Player Money : " + GameManager.instance.playerMoney + "+" + (int)PlayerStatManager.salary + PlayerStatManager.baseSalary;
+        moneyText.text = "Player Money : " + GameManager.instance.playerMoney + "+" + (int)PlayerStatManager.salary;
         GameManager.instance.ProgressDay();
         nextValueText.text = "Next Day Value: " + GameManager.instance.neededValue; 
     }
