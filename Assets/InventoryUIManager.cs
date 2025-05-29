@@ -290,6 +290,10 @@ public class InventoryUIManager : MonoBehaviour
         if( Physics.Raycast(beamPos, Vector3.forward, out ray,Mathf.Infinity, UILayer)) 
         {
             heldMerchUIObject = ray.collider.transform.parent.GetComponent<MerchUIObject>();
+
+            if (heldMerchUIObject == null)
+                return;
+
             heldMerchUIObject.ClearInventoryTiles();
             merchInstances.Remove(heldMerchUIObject.merch);
             merchDisplayUI.DisplayMerch(heldMerchUIObject.merch);

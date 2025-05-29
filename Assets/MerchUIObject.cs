@@ -17,7 +17,7 @@ public class MerchUIObject : MonoBehaviour
 
     private void Awake()
     {
-        if (TestObject == true)
+        if (!TestObject)
             return;
 
         if (merch == null)
