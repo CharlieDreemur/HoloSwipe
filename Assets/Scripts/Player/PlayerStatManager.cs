@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerStatManager : MonoBehaviour
 {
@@ -9,6 +10,25 @@ public class PlayerStatManager : MonoBehaviour
     public PlayerStats playerStats;
 
     public bool slowed;
+
+    public bool steal = true;
+    public void DisableSteal(int value)
+    {
+        if (steal)
+        {
+            MoneyChanges.instance.LoseMoney(value);
+            gameObject.GetComponent<PlayerInventory>().ChangeMoney(-1 * value);
+            StartCoroutine(DisableStealHelper());
+        }
+        
+    }
+
+    public IEnumerator DisableStealHelper()
+    {
+        steal = false;
+        yield return new WaitForSeconds(1);
+        steal = true;
+    }
 
     private void Start()
     {

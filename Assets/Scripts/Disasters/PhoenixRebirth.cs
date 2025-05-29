@@ -45,7 +45,7 @@ public class PhoenixRebirth : Disaster
                 flames.transform.position -= new Vector3(0, flameHeight * Time.deltaTime/delay, 0);
                 if (touchingPlayer)
                 {
-                    EndDay();
+                    stealMoney(5);
                 }
             }
             if (timePassed > delay)

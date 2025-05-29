@@ -20,7 +20,16 @@ public class Disaster : MonoBehaviour
 
     public void EndDay() //general method disasters use to end the day if they hit the player
     {
-        print("Day ended frfr");
+        PlayerStatManager statManager = playerCharacter.GetComponent<PlayerStatManager>();
+        PlayerInventory inventory = playerCharacter.GetComponent<PlayerInventory>();
+        GameManager.instance.EndDay(inventory, statManager);
+    }
+
+    public void stealMoney(int value)
+    {
+        
+        playerCharacter.GetComponent<PlayerStatManager>().DisableSteal(value);
+        
     }
 
     /*private void OnCollisionEnter(Collision collision)

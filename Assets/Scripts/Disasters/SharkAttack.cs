@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+
 
 public class SharkAttack : Disaster
 {
@@ -18,7 +20,9 @@ public class SharkAttack : Disaster
     [SerializeField] GameObject[] sharks;
 
     float timePassed = 0;
-    
+
+
+
     void Start()
     {
         rotSpeed = rotSpeed * (1 + speedIncrease * day);
@@ -49,7 +53,7 @@ public class SharkAttack : Disaster
             sharkCenter.transform.position = new Vector3(sharkCenter.transform.position.x, depth + height, sharkCenter.transform.position.z);
             if (touchingPlayer)
             {
-                EndDay();
+                stealMoney(3);
             }
         }
 

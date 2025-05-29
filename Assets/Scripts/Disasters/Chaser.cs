@@ -10,7 +10,7 @@ public class Chaser : Disaster
         agent.SetDestination(playerloc());
         if (touchingPlayer)
         {
-            EndDay();
+            stealMoney(2);
         }
     }
 }

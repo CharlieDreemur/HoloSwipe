@@ -28,13 +28,13 @@ public class EldritchManager : Disaster
             x = Random.Range(minX, maxX);
             z = Random.Range(minZ, maxZ);
         } while (Vector3.Distance(playerloc(), new Vector3(x, 0, z)) < minDist);
+        temp.transform.position = new Vector3(x, 0, z);
         temp.transform.Rotate(new Vector3(0, Random.Range(0, 360), 0));
+
 
         for (int i = 0; i < numTentacles-1; i++)
         {
             temp = Instantiate(TentaclePrefab);
-            x = 0;
-            z = 0;
             do //prevents tentacles from spawning directly on player
             {
                 x = Random.Range(minX, maxX);

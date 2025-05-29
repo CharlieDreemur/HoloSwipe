@@ -47,6 +47,7 @@ public class Pickup : MonoBehaviour
         if (touchingPlayer)
         {
             playerCharacter.GetComponent<PlayerInventory>().ChangeMoney(value);
+            MoneyChanges.instance.GainMoney(value);
             Destroy(gameObject);
             //give them stuff
         }

@@ -69,7 +69,7 @@ public class PickupsManager : MonoBehaviour
 
     void spawnRandom()
     {
-        float choice = Random.Range(0,   baseLitterChance + baseCoinChance + 0.3f * luck + baseCoinBagChance + 0.6f * luck +  baseLootCrateChance +0.1f*luck);
+        float choice = Random.Range(0,   baseLitterChance + baseCoinChance + 0.9f * luck + baseCoinBagChance + 1.8f * luck +  baseLootCrateChance +0.3f*luck);
         //odds are also modified by luck
         if (choice < baseLitterChance)
         {

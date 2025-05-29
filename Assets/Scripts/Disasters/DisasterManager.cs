@@ -99,6 +99,7 @@ public class DisasterManager : MonoBehaviour
         phoenixRebirthWarning.SetActive(true);
         GameObject temp = Instantiate(phoenixRebirthPrefab);
         temp.transform.position = new Vector3(x, 0, z);
+        temp.GetComponent<Disaster>().playerCharacter = PlayerCharacter;
         temp.GetComponent<Disaster>().day = day;
     }
 
@@ -127,6 +128,7 @@ public class DisasterManager : MonoBehaviour
         sharkAttackWarning.SetActive(true);
         GameObject temp = Instantiate(sharkAttackPrefab);
         temp.transform.position = new Vector3(x, 0, z);
+        temp.GetComponent<Disaster>().playerCharacter = PlayerCharacter;
         temp.GetComponent<Disaster>().day = day;
     }
 

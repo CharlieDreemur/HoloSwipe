@@ -20,7 +20,7 @@ public class Yagoo : Chaser
     }
     new private void Update()
     {
-        base.Update();
+        
         if (slowed)
         {
             agent.speed = baseSpeed * YagooFactor/3;
@@ -36,7 +36,12 @@ public class Yagoo : Chaser
 
             YagooFactor += YagooAccel * Time.deltaTime;
         }
-        
+        if (touchingPlayer)
+        {
+            EndDay();
+        }
+        base.Update();
+
     }
 
 }
