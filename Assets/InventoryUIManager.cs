@@ -48,7 +48,6 @@ public class InventoryUIManager : MonoBehaviour
         if(newItem != null) 
         {
             MerchUIObject newItemInstance = Instantiate(merchUIObject, merchParent);
-            newItemInstance.transform.rotation = Quaternion.Euler( newItem.UIRotation);
             newItemInstance.transform.position = newItemPos.position;
             newItemInstance.SetMerch(new MerchInstance(newItem));
             newItem = null;

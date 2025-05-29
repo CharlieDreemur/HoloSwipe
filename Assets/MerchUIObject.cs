@@ -32,7 +32,7 @@ public class MerchUIObject : MonoBehaviour
 
         GameObject merchMesh = Instantiate(merch.merch.mesh, transform.position, Quaternion.identity, transform);
         merchMesh.transform.localScale = Vector3.one * merch.merch.UISize;
-        merchMesh.transform.localRotation = Quaternion.Euler(0, 0, 0);
+        merchMesh.transform.localRotation = Quaternion.Euler(merch.merch.UIRotation);
         merchMesh.layer = LayerMask.NameToLayer("UI");
         tilePos = new List<Vector2Int>(merch.merch.merchUIShape);
         offset = merch.merch.zeroZeroPos;
