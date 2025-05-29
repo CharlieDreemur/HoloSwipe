@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     {
         neededValue = (int)(neededValue * 1.5f);
         day++;
-        playerMoney += (int)PlayerStatManager.salary;
+        playerMoney += (int)PlayerStatManager.salary + (int)PlayerStatManager.baseSalary;
     }
     
     public void EndDay(PlayerInventory inventory, PlayerStatManager playerStats) 
