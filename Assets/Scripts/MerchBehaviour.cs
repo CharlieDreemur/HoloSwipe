@@ -26,6 +26,7 @@ public class MerchBehaviour : MonoBehaviour
         merchInstance.layer = LayerMask.NameToLayer("Merch");
         merchInstance.AddComponent(typeof(Rigidbody));
         merchInstance.GetComponent<Rigidbody>().isKinematic = true;
+        merchInstance.AddComponent<FloatingItem>();
     }
 
     public string GetDescription() 
