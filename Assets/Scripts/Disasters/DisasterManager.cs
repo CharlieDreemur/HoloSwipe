@@ -46,6 +46,7 @@ public class DisasterManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        dayLength = GameManager.instance.
         day = gm.day; //need to be able to access day from game manager 
         timePassed += Time.deltaTime;
         if (timePassed > nextSpawn)

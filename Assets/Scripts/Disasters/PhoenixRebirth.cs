@@ -19,7 +19,7 @@ public class PhoenixRebirth : Disaster
         delay = delay / (1 + speedIncrease*day); // fires faster on later days
         duration = duration / (1 + speedIncrease * day); // duration also decreases cause its not really meant to be a duration disaster
         outerCircle.transform.localScale = new Vector3(radius, 0.01f, radius);
-        flames.transform.localScale = new Vector3(radius, 1, radius);
+        flames.transform.localScale = new Vector3(radius, 0.5f, radius);
 
     }
 
