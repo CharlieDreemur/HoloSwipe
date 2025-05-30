@@ -3,7 +3,17 @@ guid: 732de917baf4e4fae8176821c563012e
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Money Big mat
+    second: {fileID: 2100000, guid: 97ef8892ec8483848b9ccf1e2186766e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Money mat
+    second: {fileID: 2100000, guid: 0426d985a1dc1c649812c03f1cd13771, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
