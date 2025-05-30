@@ -9,8 +9,12 @@ public class PhoenixRebirth : Disaster
     public float flameHeight;
     public float kiaraAscensionSpeed; //just made it speed instead of height cause thats how I initially programmed it and i dont wanna spend another minute
 
+    bool audioplayed = false;
 
     [SerializeField] GameObject innerCircle, outerCircle, flames, kiara;
+
+    [SerializeField] AudioSource audiosource;
+    [SerializeField] AudioClip fireClip;
 
     float timePassed = 0;
     
@@ -42,6 +46,12 @@ public class PhoenixRebirth : Disaster
                 innerCircle.SetActive(false);
                 outerCircle.SetActive(false);
                 flames.SetActive(true);
+                if (!audioplayed)
+                {
+                    audioplayed = true;
+                    audiosource.volume = GlobalAudio.instance.sfxvol;
+                    audiosource.PlayOneShot(fireClip);
+                }
                 flames.transform.position -= new Vector3(0, flameHeight * Time.deltaTime/delay, 0);
                 if (touchingPlayer)
                 {
