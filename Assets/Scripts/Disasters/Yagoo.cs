@@ -38,7 +38,9 @@ public class Yagoo : Chaser
         }
         if (touchingPlayer)
         {
+            stealMoney((int)(50 * (Mathf.Pow(1.25f, GameManager.instance.day))));
             EndDay();
+
         }
         base.Update();
 
