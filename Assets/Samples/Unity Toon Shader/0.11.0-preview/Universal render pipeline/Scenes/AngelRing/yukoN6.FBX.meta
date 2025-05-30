@@ -1,113 +1,246 @@
 fileFormatVersion: 2
 guid: dd4bfd7407154b61b3f95ea870112741
-timeCreated: 1487305832
-licenseType: Pro
 ModelImporter:
-  serializedVersion: 19
-  fileIDToRecycleName:
-    100000: eyeHighLight
-    100002: eyeline
-    100004: head
-    100006: mayu
-    100008: Ntest_hair010
-    100010: tongue
-    100012: utc_head
-    100014: utc_head 1
-    100016: yuko_head
-    100018: yuko_nose
-    100020: //RootNode
-    100022: group
-    100024: pasted__yuko_head002
-    400000: eyeHighLight
-    400002: eyeline
-    400004: head
-    400006: mayu
-    400008: Ntest_hair010
-    400010: tongue
-    400012: utc_head
-    400014: utc_head 1
-    400016: yuko_head
-    400018: yuko_nose
-    400020: //RootNode
-    400022: group
-    400024: pasted__yuko_head002
-    2300000: eyeHighLight
-    2300002: eyeline
-    2300004: head
-    2300006: mayu
-    2300008: Ntest_hair010
-    2300010: tongue
-    2300012: yuko_nose
-    2300014: pasted__yuko_head002
-    3300000: eyeHighLight
-    3300002: eyeline
-    3300004: head
-    3300006: mayu
-    3300008: Ntest_hair010
-    3300010: tongue
-    3300012: yuko_nose
-    3300014: pasted__yuko_head002
-    4300000: tongue
-    4300002: eyeHighLight
-    4300004: head
-    4300006: mayu
-    4300008: yuko_nose
-    4300010: yuko_head
-    4300012: Ntest_hair010
-    4300014: eyeline
-    4300016: pasted__yuko_head002
-    7400000: Take 001
-    9500000: //RootNode
-    13700000: yuko_head
+  serializedVersion: 22200
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: eyeHighLight
+  - first:
+      1: 100002
+    second: eyeline
+  - first:
+      1: 100004
+    second: head
+  - first:
+      1: 100006
+    second: mayu
+  - first:
+      1: 100008
+    second: Ntest_hair010
+  - first:
+      1: 100010
+    second: tongue
+  - first:
+      1: 100012
+    second: utc_head
+  - first:
+      1: 100014
+    second: utc_head 1
+  - first:
+      1: 100016
+    second: yuko_head
+  - first:
+      1: 100018
+    second: yuko_nose
+  - first:
+      1: 100020
+    second: //RootNode
+  - first:
+      1: 100022
+    second: group
+  - first:
+      1: 100024
+    second: pasted__yuko_head002
+  - first:
+      4: 400000
+    second: eyeHighLight
+  - first:
+      4: 400002
+    second: eyeline
+  - first:
+      4: 400004
+    second: head
+  - first:
+      4: 400006
+    second: mayu
+  - first:
+      4: 400008
+    second: Ntest_hair010
+  - first:
+      4: 400010
+    second: tongue
+  - first:
+      4: 400012
+    second: utc_head
+  - first:
+      4: 400014
+    second: utc_head 1
+  - first:
+      4: 400016
+    second: yuko_head
+  - first:
+      4: 400018
+    second: yuko_nose
+  - first:
+      4: 400020
+    second: //RootNode
+  - first:
+      4: 400022
+    second: group
+  - first:
+      4: 400024
+    second: pasted__yuko_head002
+  - first:
+      23: 2300000
+    second: eyeHighLight
+  - first:
+      23: 2300002
+    second: eyeline
+  - first:
+      23: 2300004
+    second: head
+  - first:
+      23: 2300006
+    second: mayu
+  - first:
+      23: 2300008
+    second: Ntest_hair010
+  - first:
+      23: 2300010
+    second: tongue
+  - first:
+      23: 2300012
+    second: yuko_nose
+  - first:
+      23: 2300014
+    second: pasted__yuko_head002
+  - first:
+      33: 3300000
+    second: eyeHighLight
+  - first:
+      33: 3300002
+    second: eyeline
+  - first:
+      33: 3300004
+    second: head
+  - first:
+      33: 3300006
+    second: mayu
+  - first:
+      33: 3300008
+    second: Ntest_hair010
+  - first:
+      33: 3300010
+    second: tongue
+  - first:
+      33: 3300012
+    second: yuko_nose
+  - first:
+      33: 3300014
+    second: pasted__yuko_head002
+  - first:
+      43: 4300000
+    second: tongue
+  - first:
+      43: 4300002
+    second: eyeHighLight
+  - first:
+      43: 4300004
+    second: head
+  - first:
+      43: 4300006
+    second: mayu
+  - first:
+      43: 4300008
+    second: yuko_nose
+  - first:
+      43: 4300010
+    second: yuko_head
+  - first:
+      43: 4300012
+    second: Ntest_hair010
+  - first:
+      43: 4300014
+    second: eyeline
+  - first:
+      43: 4300016
+    second: pasted__yuko_head002
+  - first:
+      74: 7400000
+    second: Take 001
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: yuko_head
+  externalObjects: {}
   materials:
-    importMaterials: 0
+    materialImportMode: 0
     materialName: 1
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
     motionNodeName: 
-    rigImportErrors: 
-    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations: []
     isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 5
-    meshCompression: 0
+    meshCompression: 2
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 0
+    importVisibility: 0
     importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
+    strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 0
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -117,14 +250,19 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 5
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  importBlendShapeDeformPercent: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
