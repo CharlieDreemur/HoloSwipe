@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null)
+        if (instance != null && SceneManager.GetActiveScene().name != "MainMenu") //game will reset on main menu
         {
             Destroy(gameObject);
             return;

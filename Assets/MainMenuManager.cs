@@ -4,13 +4,18 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
+    [SerializeField] string GameScene;
+
+
     public void StartGame() 
     {
-        SceneManager.LoadScene("PreCon");
+        SceneManager.LoadScene(GameScene);
     }
+
 
     public void Start()
     {
+        
         if (!(GlobalAudio.instance.source2.isPlaying))
         {
             GlobalAudio.instance.loopMenuMusic();

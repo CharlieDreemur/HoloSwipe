@@ -9,6 +9,8 @@ public class EndOfRoundManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI boughtMerchText, valueText, nextValueText, moneyText;
 
+    [SerializeField] string GameScene;
+
     public int merchValue;
     bool madeValue;
 
@@ -50,7 +52,7 @@ public class EndOfRoundManager : MonoBehaviour
     public void Proceed() 
     {
         if(madeValue)
-            SceneManager.LoadScene("PreCon");
+            SceneManager.LoadScene(GameScene);
         else
             SceneManager.LoadScene("GameOverScene");
     }
