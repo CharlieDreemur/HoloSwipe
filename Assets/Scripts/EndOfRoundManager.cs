@@ -57,7 +57,7 @@ public class EndOfRoundManager : MonoBehaviour
     {
         if (madeValue)
         {
-            if(GameManager.instance.day >= 7)
+            if(GameManager.instance.day <= 7)
                 SceneManager.LoadScene(GameScene);
             else
                 SceneManager.LoadScene("WinScreen");

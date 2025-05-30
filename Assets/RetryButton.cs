@@ -6,6 +6,7 @@ public class RetryButton : MonoBehaviour
     public void RetryGame() 
     {
         Destroy( GameManager.instance);
+        PlayerStatManager.ResetStats();
         SceneManager.LoadScene("MainMenu");
     }
 }
