@@ -6,7 +6,7 @@ public class PlayerStatManager : MonoBehaviour
     [SerializeField] StatsSO BaseStats;
     [SerializeField] ECM2.Character PlayerCharacter;
     [SerializeField] GameObject Player;
-    public static float speedMultiplier = 1, salary = 1, discount = 0, luck = 0, fanScoreMultiplier = 1, fanScore = 0, baseSalary, conTime = 0;
+    public static float speedMultiplier = 1, salary = 1, discount , luck = 0, fanScoreMultiplier = 1, fanScore = 0, baseSalary = 100, conTime = 0, pickUpBonus = 0, pickUpMulti = 1;
     public PlayerStats playerStats;
 
     public bool slowed;
@@ -33,7 +33,6 @@ public class PlayerStatManager : MonoBehaviour
     private void Start()
     {
         //the way im gonna do it now is very scuffed and needs to be looked at again later
-        baseSalary = BaseStats.baseSalary;
         if (GameManager.instance != null)
             playerStats = new PlayerStats( GameManager.instance.playerStats);
         else

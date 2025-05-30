@@ -7,7 +7,7 @@ public class DiscountMerchEffect : MerchEffect
 
     public override string GetEffectString()
     {
-        return "+" + value + "% discount";
+        return "+" + value + "% discount tomorow";
     }
 
     public override float GetStatValue()

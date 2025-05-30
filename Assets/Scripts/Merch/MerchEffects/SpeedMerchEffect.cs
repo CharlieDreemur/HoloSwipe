@@ -5,17 +5,6 @@ public class SpeedMerchEffect : MerchEffect
 {
     public float speedAmount;
 
-    /*public override void OnPickUp(PlayerStatManager playerStatManager)
-    {
-        playerStatManager.playerStats.speed += speedAmount;
-    }
-
-    public override void OnDrop(PlayerStatManager playerStatManager)
-    {
-        playerStatManager.playerStats.speed -= speedAmount;
-    }*/
-
-
     public override string GetEffectString()
     {
         return "+" + speedAmount + "% speed";

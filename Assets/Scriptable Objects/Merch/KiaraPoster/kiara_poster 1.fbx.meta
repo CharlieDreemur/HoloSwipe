@@ -3,7 +3,12 @@ guid: 0574784a174825b429e795fd67b807b5
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: kiara_poster1
+    second: {fileID: 2100000, guid: 34023e4bda90694499fa43f2260068b4, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
