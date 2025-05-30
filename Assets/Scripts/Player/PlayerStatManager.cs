@@ -6,7 +6,7 @@ public class PlayerStatManager : MonoBehaviour
     [SerializeField] StatsSO BaseStats;
     [SerializeField] ECM2.Character PlayerCharacter;
     [SerializeField] GameObject Player;
-    public static float speedMultiplier = 1, salary = 1, discount , luck = 0, fanScoreMultiplier = 1, fanScore = 0, baseSalary = 100, conTime = 0, pickUpBonus = 0, pickUpMulti = 1;
+    public static float speedMultiplier = 1, salary = 1, discount, luck = 0, fanScoreMultiplier = 1, fanScore = 0, baseSalary = 100, conTime = 0, pickUpBonus = 0, pickUpMulti = 1;
     public PlayerStats playerStats;
 
     public bool slowed;
@@ -20,7 +20,7 @@ public class PlayerStatManager : MonoBehaviour
             gameObject.GetComponent<PlayerInventory>().ChangeMoney(-1 * value);
             StartCoroutine(DisableStealHelper());
         }
-        
+
     }
 
     public IEnumerator DisableStealHelper()
@@ -29,6 +29,9 @@ public class PlayerStatManager : MonoBehaviour
         yield return new WaitForSeconds(1);
         steal = true;
     }
+
+
+    
 
     private void Start()
     {
@@ -49,12 +52,17 @@ public class PlayerStatManager : MonoBehaviour
             PlayerCharacter.rotationRate = PlayerCharacter.rotationRate * 0.3f;
             PlayerCharacter.maxWalkSpeed = PlayerCharacter.maxWalkSpeed * 0.3f;
         }
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("TimeParadox"))
         {
+            if (!slowed)
+            {
+                GlobalAudio.instance.enterTimeSlow();
+            }
             slowed = true;
         }
     }
@@ -70,7 +78,22 @@ public class PlayerStatManager : MonoBehaviour
     {
         if (other.gameObject.CompareTag("TimeParadox"))
         {
+            StartCoroutine(exitTimeParadoxAudio());
             slowed = false;
+           
         }
+    }
+
+    public IEnumerator exitTimeParadoxAudio()
+    {
+        yield return new WaitForFixedUpdate();
+
+
+        if (!slowed)
+        {
+            GlobalAudio.instance.exitTimeSlow();
+        }
+        //GlobalAudio.instance.exitTimeSlow();
+
     }
 }

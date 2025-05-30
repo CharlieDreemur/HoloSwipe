@@ -4,7 +4,7 @@ public class DisasterManager : MonoBehaviour
 {
     public int day; // day #
 
-    [SerializeField] GameManager gm; //This is where I would put the GameManager, IF I HAD ONE
+    //[SerializeField] GameManager gm; //This is where I would put the GameManager, IF I HAD ONE
     [SerializeField] GameObject PlayerCharacter; //will pass this onto disasters spawned
     [SerializeField] GameObject Camera; //can pass onto disasters
     [SerializeField] Canvas canvas; // can be used to give player warnings
@@ -48,7 +48,7 @@ public class DisasterManager : MonoBehaviour
     void Update()
     {
         
-        day = gm.day; //need to be able to access day from game manager 
+        day = GameManager.instance.day; //need to be able to access day from game manager 
         timePassed += Time.deltaTime;
         if (timePassed > nextSpawn)
         {
