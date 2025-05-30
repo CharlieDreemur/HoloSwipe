@@ -6,7 +6,7 @@ public class GlobalAudio : MonoBehaviour
 {
 
     public static GlobalAudio instance;
-    public float musicvol = 1, sfxvol = 1;
+    public float musicvol = 0.8f, sfxvol = 0.8f;
 
     public AudioSource source1, source2, sfxmusicsource, sfxsource; //for potential crossfade
 
@@ -24,7 +24,6 @@ public class GlobalAudio : MonoBehaviour
         
         if (instance != null)
         {
-            
             Destroy(gameObject);
             return;
         }
