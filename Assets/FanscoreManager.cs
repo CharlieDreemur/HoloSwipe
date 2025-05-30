@@ -14,6 +14,6 @@ public class FanscoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        fanscoreText.text = PlayerStatManager.fanScore + "/" + GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().neededValue;
+        fanscoreText.text = PlayerStatManager.fanScore + "/" + GameManager.instance.neededValue;
     }
 }

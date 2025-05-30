@@ -8,4 +8,13 @@ public class MainMenuManager : MonoBehaviour
     {
         SceneManager.LoadScene("PreCon");
     }
+
+    public void Start()
+    {
+        if (!(GlobalAudio.instance.source2.isPlaying))
+        {
+            GlobalAudio.instance.loopMenuMusic();
+        }
+        
+    }
 }

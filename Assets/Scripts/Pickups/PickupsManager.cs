@@ -33,10 +33,12 @@ public class PickupsManager : MonoBehaviour
 
     [SerializeField] GameObject litterPrefab, coinPrefab, coinBagPrefab, lootCratePrefab; // reference prefabs so they can spawn
 
-    [SerializeField] MerchSO[] merchPool;
+    public MerchCollcetion merchcol;
+    MerchSO[] merchPool;
 
     public MerchSO GetRandomMerch()
     {
+        merchPool = merchcol.merches;
         return merchPool[Random.Range(0, merchPool.Length)];
     }
 
