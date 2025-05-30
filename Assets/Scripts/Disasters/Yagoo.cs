@@ -23,11 +23,11 @@ public class Yagoo : Chaser
         
         if (slowed)
         {
-            agent.speed = baseSpeed * YagooFactor/3;
-            agent.angularSpeed = baseRotSpeed * YagooFactor/3;
-            agent.acceleration = baseAcceleration * YagooFactor/3;
+            agent.speed = baseSpeed * YagooFactor*0.7f;
+            agent.angularSpeed = baseRotSpeed * YagooFactor * 0.7f;
+            agent.acceleration = baseAcceleration * YagooFactor*0.7f;
 
-            YagooFactor += YagooAccel * Time.deltaTime/3;
+            YagooFactor += YagooAccel * Time.deltaTime * 0.7f;
         }
         else {
             agent.speed = baseSpeed * YagooFactor;
