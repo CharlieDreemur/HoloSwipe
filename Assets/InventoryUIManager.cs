@@ -243,7 +243,7 @@ public class InventoryUIManager : MonoBehaviour
                     }
                 } else
                 {
-                    heldMerchUIObject.transform.localPosition = new Vector3(-315, -150, -10); //only tested with trident but it p much just has to be apparent that it failed to place
+                   // heldMerchUIObject.transform.localPosition = new Vector3(-315, -150, -10); //only tested with trident but it p much just has to be apparent that it failed to place
                 }
 
                 heldMerchUIObject = null;
