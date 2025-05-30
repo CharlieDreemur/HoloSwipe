@@ -91,6 +91,7 @@ public class PlayerInventory : MonoBehaviour
         ChangeMoney(-merchInstance.cost);
         InventoryUIManager.newItem = merchInstance.merch;
         InventoryUIManager.OpenInventory();
+        GlobalAudio.instance.BuyItem();
         Destroy(merchInstance.gameObject);
     }
 

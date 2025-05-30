@@ -35,6 +35,7 @@ public class InventoryUIManager : MonoBehaviour
 
     public static void OpenInventory() 
     {
+        GlobalAudio.instance.OpenInventory();
         SceneManager.LoadScene("InventoryScene", LoadSceneMode.Additive);
         Time.timeScale = 0f;
     }
@@ -229,7 +230,8 @@ public class InventoryUIManager : MonoBehaviour
                 ClickInArea();
             else 
             {
-                if(inventoryTile != null) 
+                GlobalAudio.instance.ClickOff();
+                if (inventoryTile != null) 
                 {
                     if(DoesMerchItemFit(heldMerchUIObject, inventoryTile.pos))
                     {
@@ -288,6 +290,7 @@ public class InventoryUIManager : MonoBehaviour
 
         if( Physics.Raycast(beamPos, Vector3.forward, out ray,Mathf.Infinity, UILayer)) 
         {
+            GlobalAudio.instance.ClickOn();
             heldMerchUIObject = ray.collider.transform.parent.GetComponent<MerchUIObject>();
 
             if (heldMerchUIObject == null)
@@ -302,7 +305,7 @@ public class InventoryUIManager : MonoBehaviour
 
     public void CloseInventory() 
     {
-
+        GlobalAudio.instance.CloseInventory();
         Time.timeScale = 1f;
         GameManager.instance.merch = merchInstances;
         CalculateStats();

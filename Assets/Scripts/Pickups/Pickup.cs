@@ -51,6 +51,7 @@ public class Pickup : MonoBehaviour
 
             playerCharacter.GetComponent<PlayerInventory>().ChangeMoney(value);
             MoneyChanges.instance.GainMoney(value);
+            GlobalAudio.instance.CollectSound();
             Destroy(gameObject);
             //give them stuff
         }

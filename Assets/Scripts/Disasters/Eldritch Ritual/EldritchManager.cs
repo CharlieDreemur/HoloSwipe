@@ -20,6 +20,7 @@ public class EldritchManager : Disaster
     void Start()
     {
         Camera.GetComponent<CameraShake>().shake = spawnTime;
+        GlobalAudio.instance.EarthShake();
         GameObject temp = Instantiate(InaTentaclePrefab);
         float x = 0;
         float z = 0;
@@ -51,6 +52,7 @@ public class EldritchManager : Disaster
         timePassed += Time.deltaTime;
         if (timePassed > spawnTime + duration)
         {
+            GlobalAudio.instance.EarthShake();
             Camera.GetComponent<CameraShake>().shake = spawnTime;
             Destroy(gameObject);
         }

@@ -16,7 +16,7 @@ public class GlobalAudio : MonoBehaviour
     //sfx source: global sound effects
 
 
-    public AudioClip menutheme, gamemusic, timeslow, timeslowreverse, earthshake, collect, clocktick;
+    public AudioClip menutheme, gamemusic, timeslow, timeslowreverse, earthshake, collect, clocktick, openinventory,closeinventory, clickon, clickoff, buyitem;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -90,6 +90,31 @@ public class GlobalAudio : MonoBehaviour
     public void EarthShake()
     {
         sfxsource.PlayOneShot(earthshake);
+    }
+
+    public void OpenInventory()
+    {
+        sfxsource.PlayOneShot(openinventory);
+    }
+
+    public void CloseInventory()
+    {
+        sfxsource.PlayOneShot(closeinventory);
+    }
+
+    public void ClickOn()
+    {
+        sfxsource.PlayOneShot(clickon);
+    }
+
+    public void ClickOff()
+    {
+        sfxsource.PlayOneShot(clickoff);
+    }
+
+    public void BuyItem()
+    {
+        sfxsource.PlayOneShot(buyitem);
     }
 
     IEnumerator delayStop1()

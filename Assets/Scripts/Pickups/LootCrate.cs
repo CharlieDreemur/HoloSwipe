@@ -51,6 +51,7 @@ public class LootCrate : MonoBehaviour
             MoneyChanges.instance.GainMoney(value);
             InventoryUIManager.newItem = merch;
             InventoryUIManager.OpenInventory();
+            GlobalAudio.instance.CollectSound();
             Destroy(gameObject);
             //give them stuff
         }
