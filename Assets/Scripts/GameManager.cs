@@ -29,7 +29,15 @@ public class GameManager : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(gameObject);
     }
+    private void Update()
+    {
+        if (Input.GetKey("escape"))
+        {
+            Application.Quit();
+        }
 
+    }
+    
     public void ProgressDay() 
     {
         neededValue = (int)(neededValue * 1.5f);
