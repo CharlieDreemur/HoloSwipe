@@ -12,6 +12,7 @@ public class EldritchManager : Disaster
     public float minX, maxX, minZ, maxZ; //determine the bounds for spawning the tentacles
 
     public GameObject TentaclePrefab;
+    public GameObject WatentaclePrefab;
     public GameObject InaTentaclePrefab;
     public GameObject Camera;
     private float timePassed = 0;
@@ -32,10 +33,15 @@ public class EldritchManager : Disaster
         temp.transform.position = new Vector3(x, 0, z);
         temp.transform.Rotate(new Vector3(0, Random.Range(0, 360), 0));
 
-
+        
         for (int i = 0; i < numTentacles-1; i++)
         {
-            temp = Instantiate(TentaclePrefab);
+            if (Random.Range(0, 50) == 0) {
+                temp = Instantiate(WatentaclePrefab);
+            } else
+            {
+                temp = Instantiate(TentaclePrefab);
+            }
             do //prevents tentacles from spawning directly on player
             {
                 x = Random.Range(minX, maxX);
