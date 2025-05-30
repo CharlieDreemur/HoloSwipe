@@ -15,11 +15,14 @@ public class MainMenuManager : MonoBehaviour
 
     public void Start()
     {
-        
-        if (!(GlobalAudio.instance.source2.isPlaying))
+        if (GlobalAudio.instance != null)
         {
-            GlobalAudio.instance.loopMenuMusic();
+            if (!(GlobalAudio.instance.source2.isPlaying))
+            {
+                GlobalAudio.instance.loopMenuMusic();
+            }
         }
+        
         
     }
 }
