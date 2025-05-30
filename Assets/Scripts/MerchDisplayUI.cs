@@ -24,7 +24,7 @@ public class MerchDisplayUI : MonoBehaviour
         this.merchName.text = merchName;
 
         Vector3 temp = cam.WorldToScreenPoint(merch.tf.position);
-        merchCost.text = "Cost: " + merch.cost.ToString();
+        merchCost.text = merch.cost.ToString();
         merchInfo.transform.position = temp + displayOffset*canvas.scaleFactor;
         merchInfo.gameObject.SetActive(true);
         merchStats.text = merch.GetDescription();
