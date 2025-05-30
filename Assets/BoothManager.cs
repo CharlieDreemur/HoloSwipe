@@ -4,15 +4,15 @@ public class BoothManager : MonoBehaviour
 {
     [SerializeField] MerchBehaviour[] merchBehaviours;
 
-     MerchSO[] merchPool;
+    MerchSO[] merchPool;
     [SerializeField] MerchCollcetion merchPoolCollction;
     private void Start()
     {
 
         if(merchPoolCollction != null)
             merchPool = merchPoolCollction.merches;
-
-        if(GameManager.instance != null)
+        
+        else if(GameManager.instance != null)
             merchPool = GameManager.instance.merchPool.merches;
         StockShop();
     }
