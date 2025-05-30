@@ -3,16 +3,25 @@ using System.Collections;
 
 public class TimeManager : MonoBehaviour
 {
-    public int time;
+    public static TimeManager Instance;
+    public int CurrTime;
 
     public delegate void PlayerValueChange(int newValue);
+    public int RemainTime = 60;
     public PlayerValueChange timeChange;
-
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
     void Start()
     {
-        time = 60 + (int)PlayerStatManager.conTime;
+
+        CurrTime = RemainTime + (int)PlayerStatManager.conTime;
         if (timeChange != null)
-            timeChange(time);
+            timeChange(CurrTime);
         StartCoroutine(CountDownTimer());
     }
 
@@ -20,13 +29,13 @@ public class TimeManager : MonoBehaviour
     {
         while (true) 
         {
-            time--;
+            CurrTime--;
             yield return new WaitForSeconds(1);
 
             if (timeChange != null)
-                timeChange(time);
+                timeChange(CurrTime);
 
-            if (time <= 0)
+            if (CurrTime <= 0)
                 break;
         }
     }

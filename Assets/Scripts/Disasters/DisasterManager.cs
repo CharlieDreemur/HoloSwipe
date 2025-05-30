@@ -40,7 +40,8 @@ public class DisasterManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        dayLength =  60 + PlayerStatManager.conTime;
+
+        dayLength =  TimeManager.Instance.RemainTime + PlayerStatManager.conTime;
         nextSpawn = Random.Range(spawnTimeMin/ (1 + spawnTimeDecrease * day), spawnTimeMax/ (1 + spawnTimeDecrease * day));
     }
 
