@@ -16,7 +16,9 @@ public class GameManager : MonoBehaviour
 
     public PlayerStats playerStats = new PlayerStats();
 
-    private void Start()
+    public MerchCollcetion merchPool;
+
+    private void Awake()
     {
         if (instance != null)
         {

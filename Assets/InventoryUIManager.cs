@@ -313,7 +313,7 @@ public class InventoryUIManager : MonoBehaviour
     void CalculateStats()
     {
         List<MerchInstance> list = GameManager.instance.merch;
-        float fanScore = 0, speedMult = 1, salary = PlayerStatManager.baseSalary , discount = 0, luck = 0, conTime = 0;
+        float fanScore = 0, speedMult = 1, salary = PlayerStatManager.baseSalary , discount = 0, luck = 0, conTime = 0, pickUpAdd = 0, pickUpMulti = 1;
         foreach (MerchInstance temp in list)
         {
             
@@ -339,6 +339,12 @@ public class InventoryUIManager : MonoBehaviour
                     case 6: //conTime
                         conTime += item.GetStatValue();
                         break;
+                    case 7: //conTime
+                        pickUpAdd += item.GetStatValue();
+                        break;
+                    case 8: //conTime
+                        pickUpMulti += item.GetStatValue() * 0.01f;
+                        break;
                 }
                 
             }
@@ -349,6 +355,8 @@ public class InventoryUIManager : MonoBehaviour
         PlayerStatManager.discount = discount;
         PlayerStatManager.luck = luck;
         PlayerStatManager.conTime = conTime;
+        PlayerStatManager.pickUpBonus = pickUpAdd;
+        PlayerStatManager.pickUpMulti = pickUpMulti;
     }
 
 }

@@ -46,6 +46,9 @@ public class Pickup : MonoBehaviour
         }
         if (touchingPlayer)
         {
+            int newValue = value + (int)PlayerStatManager.pickUpBonus;
+            newValue = Mathf.RoundToInt( newValue * PlayerStatManager.pickUpMulti);
+
             playerCharacter.GetComponent<PlayerInventory>().ChangeMoney(value);
             MoneyChanges.instance.GainMoney(value);
             Destroy(gameObject);
