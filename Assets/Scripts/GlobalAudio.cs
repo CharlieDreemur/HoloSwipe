@@ -132,6 +132,9 @@ public class GlobalAudio : MonoBehaviour
 
     IEnumerator CrossFade2() //crossfades out from source1 to source 2
     {
+        source2.volume = 0;
+        source1.volume = musicvol;
+
         for (float i = 0; i < 1; i+= 0.1f)
         {
             source1.volume -= 0.1f * musicvol;
@@ -145,6 +148,8 @@ public class GlobalAudio : MonoBehaviour
     }
     IEnumerator CrossFade1() //crossfades out from source2 to source 1
     {
+        source1.volume = 0;
+        source2.volume = musicvol;
         for (float i = 0; i < 1; i += 0.1f)
         {
             source1.volume += 0.1f * musicvol;

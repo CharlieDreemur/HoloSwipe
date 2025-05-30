@@ -19,20 +19,13 @@ public class MainMenuCanv : MonoBehaviour
 
     public void setMusicVol()
     {
+        GlobalAudio.instance.source1.Stop();
+        GlobalAudio.instance.sfxmusicsource.Stop();
         GlobalAudio.instance.musicvol = music.value;
-        if (GlobalAudio.instance.source1.volume != 0)
-        {
-            GlobalAudio.instance.source1.volume = music.value;
-        }
-        if (GlobalAudio.instance.source2.volume != 0)
-        {
-            GlobalAudio.instance.source2.volume = music.value;
-        }
-
-        if (GlobalAudio.instance.sfxmusicsource.volume != 0)
-        {
-            GlobalAudio.instance.sfxmusicsource.volume = music.value;
-        }
+        GlobalAudio.instance.source1.volume = music.value;
+        GlobalAudio.instance.source2.volume = music.value;
+        GlobalAudio.instance.sfxmusicsource.volume = music.value;
+        
 
     }
 
