@@ -8,7 +8,7 @@ public class PickUpMultiMerchEffect : MerchEffect
 
     public override string GetEffectString()
     {
-        return "+" + percentMulti + "bonus on pickup";
+        return "+" + percentMulti + "% bonus on pickup";
     }
 
     public override float GetStatValue()

@@ -38,7 +38,11 @@ public class EndOfRoundManager : MonoBehaviour
 
         foreach (var item in merch)
         {
-            text += "<br> " + item.merch.name;
+            string merchName = item.merch.name;
+
+            merchName = merchName.Replace("_MerchSO", "");
+
+            text += "<br> " + merchName;
         }
 
         boughtMerchText.text = text;
@@ -51,8 +55,13 @@ public class EndOfRoundManager : MonoBehaviour
 
     public void Proceed() 
     {
-        if(madeValue)
-            SceneManager.LoadScene(GameScene);
+        if (madeValue)
+        {
+            if(GameManager.instance.day >= 7)
+                SceneManager.LoadScene(GameScene);
+            else
+                SceneManager.LoadScene("Win Scene");
+        }
         else
             SceneManager.LoadScene("GameOverScene");
     }

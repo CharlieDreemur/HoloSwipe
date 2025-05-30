@@ -9,7 +9,7 @@ public class PosterMerchEffect : MerchEffect
 
     public override string GetEffectString()
     {
-        return merchEffectChild.GetEffectString() + " per UNIQuE poster (Current " + GetUniquePosters() + ")";
+        return merchEffectChild.GetEffectString() + " per UNIQuE " + posterCollection.name + " merch (Current " + GetUniquePosters() + ")";
     }
 
     public int GetUniquePosters() 
