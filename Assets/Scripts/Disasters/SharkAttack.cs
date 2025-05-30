@@ -53,7 +53,7 @@ public class SharkAttack : Disaster
             sharkCenter.transform.position = new Vector3(sharkCenter.transform.position.x, depth + height, sharkCenter.transform.position.z);
             if (touchingPlayer)
             {
-                stealMoney(3);
+                stealMoney((int)(10 * (Mathf.Pow(1.25f, GameManager.instance.day))));
             }
         }
 
