@@ -60,7 +60,7 @@ public class EndOfRoundManager : MonoBehaviour
             if(GameManager.instance.day >= 7)
                 SceneManager.LoadScene(GameScene);
             else
-                SceneManager.LoadScene("Win Scene");
+                SceneManager.LoadScene("WinScreen");
         }
         else
             SceneManager.LoadScene("GameOverScene");
