@@ -88,7 +88,7 @@ public class PickupsManager : MonoBehaviour
             temp.GetComponent<Pickup>().gm = gm;
             temp.transform.position = new Vector3(x, 0, z);
             temp.transform.Rotate(new Vector3(0, Random.Range(0, 360), 0));
-        } else if (choice < baseLitterChance + baseCoinChance + 0.3f * luck)
+        } else if (choice < baseLitterChance + baseCoinChance + 0.9f * luck)
         {
             //spawn coin
             float x = Random.Range(minX, maxX);
@@ -103,7 +103,7 @@ public class PickupsManager : MonoBehaviour
             temp.GetComponent<Pickup>().gm = gm;
             temp.transform.position = new Vector3(x, 0, z);
             temp.transform.Rotate(new Vector3(0, Random.Range(0, 360), 0));
-        } else if (choice < baseLitterChance + baseCoinChance + 0.3f * luck + baseCoinBagChance + 0.6f * luck)
+        } else if (choice < baseLitterChance + baseCoinChance + 0.9f * luck + baseCoinBagChance + 1.8f * luck)
         {
             //spawn coinbag
             float x = Random.Range(minX, maxX);
