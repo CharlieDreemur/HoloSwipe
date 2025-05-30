@@ -26,10 +26,10 @@ public class MoriBehavior : Chaser
     {
         if (slowed)
         {
-            agent.speed = baseSpeed/3;
-            agent.angularSpeed = baseRotSpeed/3;
-            agent.acceleration = baseAcceleration/3;
-            timePassed += Time.deltaTime/3;
+            agent.speed = baseSpeed * 0.7f;
+            agent.angularSpeed = baseRotSpeed * 0.7f;
+            agent.acceleration = baseAcceleration * 0.7f;
+            timePassed += Time.deltaTime * 0.7f;
 
         } else
         {
