@@ -432,6 +432,21 @@ half4 ShadeFinalColor(Varyings input) : SV_TARGET
 // fragment shared functions (for ShadowCaster, DepthOnly, DepthNormalsOnly pass to use only)
 //////////////////////////////////////////////////////////////////////////////////////////
 
+// add this line to prevent webgl build error
+#if defined(LOD_FADE_CROSSFADE) && !defined(LODFADE_CROSSFADE_DEFINED)
+    #define LODFADE_CROSSFADE_DEFINED
+    
+    // WebGL-compatible fallback implementation
+    float LODFadeCrossFade(float4 positionCS)
+    {
+        #ifdef unity_LODFade
+            return unity_LODFade.x;  // Use built-in LOD fade value if available
+        #else
+            return 1.0;  // Default value if unity_LODFade is missing
+        #endif
+    }
+#endif
+
 // copy and edit of ShadowCasterPass.hlsl
 void AlphaClipAndLODTest(Varyings input)
 {
