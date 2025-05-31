@@ -42,6 +42,7 @@ public class GlobalAudio : MonoBehaviour
         source1.clip = gamemusic;
         source1.Play();
         StartCoroutine(CrossFade1());
+        source1.loop = true;
         delayStop2();
     }
 
@@ -50,6 +51,7 @@ public class GlobalAudio : MonoBehaviour
         //start coroutine to crossfade to source 2
         source2.clip = menutheme;
         source2.Play();
+        source2.loop = true;
         StartCoroutine(CrossFade2());
         delayStop1();
     }
