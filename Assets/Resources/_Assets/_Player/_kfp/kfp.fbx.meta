@@ -3,7 +3,12 @@ guid: 87083803317bf9d4ca9b658242714d2a
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KFP_Map
+    second: {fileID: 2100000, guid: 954f9a888bdc113468455e560ad0f256, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
