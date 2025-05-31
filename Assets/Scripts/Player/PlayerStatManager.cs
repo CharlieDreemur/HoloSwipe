@@ -6,12 +6,12 @@ public class PlayerStatManager : MonoBehaviour
     [SerializeField] StatsSO BaseStats;
     [SerializeField] ECM2.Character PlayerCharacter;
     [SerializeField] GameObject Player;
-    public static float speedMultiplier = 1, salary = 1, discount, luck = 0, fanScoreMultiplier = 1, fanScore = 0, baseSalary = 50, conTime = 0, pickUpBonus = 0, pickUpMulti = 1;
+    public static float speedMultiplier = 1, salary = 1, discount, luck = 0, fanScoreMultiplier = 1, fanScore = 0, baseSalary = 100, conTime = 0, pickUpBonus = 0, pickUpMulti = 1;
     public PlayerStats playerStats;
 
     public static void ResetStats()
     {
-        speedMultiplier = 1; salary = 1; discount = 0; luck = 0; fanScoreMultiplier = 1; fanScore = 0; baseSalary = 50; conTime = 0; pickUpBonus = 0; pickUpMulti = 1;
+        speedMultiplier = 1; salary = 1; discount = 0; luck = 0; fanScoreMultiplier = 1; fanScore = 0; baseSalary = 100; conTime = 0; pickUpBonus = 0; pickUpMulti = 1;
     }
 
     public bool slowed;
