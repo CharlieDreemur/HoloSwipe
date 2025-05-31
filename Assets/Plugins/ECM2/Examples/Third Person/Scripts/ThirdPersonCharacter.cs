@@ -22,6 +22,11 @@ namespace ECM2.Examples.ThirdPerson
         [Tooltip("The maximum distance to Follow target.")]
         [SerializeField]
         public float followMaxDistance = 10.0f;
+
+        [Space(15.0f)]
+        [Tooltip("Animator component for character animations.")]
+        [SerializeField]
+        public Animator animator;
         
         protected float _cameraYaw;
         protected float _cameraPitch;
@@ -56,6 +61,18 @@ namespace ECM2.Examples.ThirdPerson
         public virtual void AddControlZoomInput(float value)
         {
             followDistance = Mathf.Clamp(followDistance - value, followMinDistance, followMaxDistance);
+        }
+
+        /// <summary>
+        /// Triggers the run animation when the character is moving.
+        /// </summary>
+        
+        public virtual void SetRunning(bool isRunning)
+        {
+            if (animator != null)
+            {
+                animator.SetBool("IsRun", isRunning);
+            }
         }
         
         /// <summary>
@@ -93,6 +110,12 @@ namespace ECM2.Examples.ThirdPerson
         protected override void Start()
         {
             base.Start();
+            
+            // Auto-assign animator if not set
+            if (animator == null)
+            {
+                animator = GetComponent<Animator>();
+            }
             
             Vector3 eulerAngles = cameraTransform.eulerAngles;
 

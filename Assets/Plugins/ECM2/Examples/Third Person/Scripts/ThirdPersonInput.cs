@@ -132,6 +132,10 @@ namespace ECM2.Examples.ThirdPerson
             movementDirection = movementDirection.relativeTo(thirdPersonCharacter.cameraTransform, thirdPersonCharacter.GetUpVector());
             
             thirdPersonCharacter.SetMovementDirection(movementDirection);
+
+            // Handle run animation based on movement input
+            bool isMoving = movementInput.magnitude > 0.1f;
+            thirdPersonCharacter.SetRunning(isMoving);
             
             // Look
             
