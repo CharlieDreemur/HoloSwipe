@@ -47,8 +47,10 @@ public class LootCrate : MonoBehaviour
         }
         if (touchingPlayer)
         {
-            playerCharacter.GetComponent<PlayerInventory>().ChangeMoney(value);
-            MoneyChanges.instance.GainMoney(value);
+            int newValue = value + (int)PlayerStatManager.pickUpBonus;
+            newValue = Mathf.RoundToInt(newValue * PlayerStatManager.pickUpMulti);
+            playerCharacter.GetComponent<PlayerInventory>().ChangeMoney(newValue);
+            MoneyChanges.instance.GainMoney(newValue);
             InventoryUIManager.newItem = merch;
             InventoryUIManager.OpenInventory();
             GlobalAudio.instance.CollectSound();
