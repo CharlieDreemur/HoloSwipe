@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class PlayerInventory : MonoBehaviour
 {
@@ -82,6 +83,14 @@ public class PlayerInventory : MonoBehaviour
     {
         if (nearbyMerch == null)
             return;
+
+        for (int i = 0; i < SceneManager.sceneCount; i++) //make sure inventory scene is not already open
+        {
+            if (SceneManager.GetSceneAt(i).name == "InventoryScene")
+            {
+                return;
+            }
+        }
 
         MerchBehaviour merchInstance = nearbyMerch;
         SetNearbyMerch(null);

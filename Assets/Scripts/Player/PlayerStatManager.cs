@@ -54,8 +54,8 @@ public class PlayerStatManager : MonoBehaviour
         PlayerCharacter.maxWalkSpeed = (BaseStats.baseMoveSpeed) * speedMultiplier;
         if (slowed)
         {
-            PlayerCharacter.rotationRate = PlayerCharacter.rotationRate * 0.7f;
-            PlayerCharacter.maxWalkSpeed = PlayerCharacter.maxWalkSpeed * 0.7f;
+            PlayerCharacter.rotationRate = PlayerCharacter.rotationRate * 0.5f;
+            PlayerCharacter.maxWalkSpeed = PlayerCharacter.maxWalkSpeed * 0.5f;
         }
 
     }

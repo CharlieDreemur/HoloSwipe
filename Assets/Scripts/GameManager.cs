@@ -40,8 +40,33 @@ public class GameManager : MonoBehaviour
     
     public void ProgressDay() 
     {
-        neededValue = (int)(neededValue * 1.5f);
+        
         day++;
+        switch (day)
+        {
+            case 1:
+                neededValue = 75;
+                break;
+            case 2:
+                neededValue = 150;
+                break;
+            case 3:
+                neededValue = 250;
+                break;
+            case 4:
+                neededValue = 400;
+                break;
+            case 5:
+                neededValue = 700;
+                break;
+            case 6:
+                neededValue = 1150;
+                break;
+            case 7:
+                neededValue = 1750;
+                break;
+
+        }
         playerMoney += (int)PlayerStatManager.salary;
     }
     
